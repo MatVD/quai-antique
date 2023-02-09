@@ -24,6 +24,7 @@
            value="{{ csrf_token('authenticate') }}"
     >
 
+
     {#
         Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
         See https://symfony.com/doc/current/security/remember_me.html
@@ -39,4 +40,8 @@
         Sign in
     </button>
 </form>
+
+    <br>
+    <p>If you don't have an account</p>
+    <a href="{{ path('app_register') }}">Register</a>
 {% endblock %}
