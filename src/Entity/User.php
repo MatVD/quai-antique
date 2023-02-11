@@ -50,12 +50,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'admin', targetEntity: Menu::class)]
     private Collection $menus;
 
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Dish::class)]
+    private Collection $dishes;
+
     public function __construct()
     {
         $this->tables = new ArrayCollection();
         $this->schedules = new ArrayCollection();
         $this->images = new ArrayCollection();
         $this->menus = new ArrayCollection();
+        $this->dishes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -285,6 +289,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             // set the owning side to null (unless already changed)
             if ($menu->getAdmin() === $this) {
                 $menu->setAdmin(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Dish>
+     */
+    public function getDishes(): Collection
+    {
+        return $this->dishes;
+    }
+
+    public function addDish(Dish $dish): self
+    {
+        if (!$this->dishes->contains($dish)) {
+            $this->dishes->add($dish);
+            $dish->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDish(Dish $dish): self
+    {
+        if ($this->dishes->removeElement($dish)) {
+            // set the owning side to null (unless already changed)
+            if ($dish->getUser() === $this) {
+                $dish->setUser(null);
             }
         }
 
