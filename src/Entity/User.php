@@ -41,9 +41,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Tables::class)]
     private Collection $tables;
 
+    #[ORM\OneToMany(mappedBy: 'admin', targetEntity: Schedules::class)]
+    private Collection $schedules;
+
     public function __construct()
     {
         $this->tables = new ArrayCollection();
+        $this->schedules = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -183,6 +187,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             // set the owning side to null (unless already changed)
             if ($table->getUser() === $this) {
                 $table->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Schedules>
+     */
+    public function getSchedules(): Collection
+    {
+        return $this->schedules;
+    }
+
+    public function addSchedule(Schedules $schedule): self
+    {
+        if (!$this->schedules->contains($schedule)) {
+            $this->schedules->add($schedule);
+            $schedule->setAdmin($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSchedule(Schedules $schedule): self
+    {
+        if ($this->schedules->removeElement($schedule)) {
+            // set the owning side to null (unless already changed)
+            if ($schedule->getAdmin() === $this) {
+                $schedule->setAdmin(null);
             }
         }
 
