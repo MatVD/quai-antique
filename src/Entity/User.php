@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -35,6 +37,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(length: 150)]
     private ?string $name = null;
+
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Tables::class)]
+    private Collection $tables;
+
+    public function __construct()
+    {
+        $this->tables = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -145,6 +155,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setName(string $name): self
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Tables>
+     */
+    public function getTables(): Collection
+    {
+        return $this->tables;
+    }
+
+    public function addTable(Tables $table): self
+    {
+        if (!$this->tables->contains($table)) {
+            $this->tables->add($table);
+            $table->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTable(Tables $table): self
+    {
+        if ($this->tables->removeElement($table)) {
+            // set the owning side to null (unless already changed)
+            if ($table->getUser() === $this) {
+                $table->setUser(null);
+            }
+        }
 
         return $this;
     }
