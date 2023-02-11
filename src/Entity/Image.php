@@ -19,6 +19,10 @@ class Image
 
     private $file;
 
+    #[ORM\ManyToOne(inversedBy: 'images')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?User $admin = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -43,6 +47,18 @@ class Image
     public function setTitle(string $title): self
     {
         $this->title = $title;
+
+        return $this;
+    }
+
+    public function getAdmin(): ?User
+    {
+        return $this->admin;
+    }
+
+    public function setAdmin(?User $admin): self
+    {
+        $this->admin = $admin;
 
         return $this;
     }
