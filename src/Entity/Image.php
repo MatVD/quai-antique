@@ -52,7 +52,7 @@ class Image
         return $this->imageFile;
     }
 
-    public function setImageFile(File $imageFile = null): void
+    public function setImageFile(?File $imageFile = null): void
     {
         $this->imageFile = $imageFile;
 
