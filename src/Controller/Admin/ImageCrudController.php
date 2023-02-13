@@ -6,7 +6,9 @@ use App\Entity\Image;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class ImageCrudController extends AbstractCrudController
 {
@@ -20,7 +22,8 @@ class ImageCrudController extends AbstractCrudController
 
         return $crud
             ->setEntityLabelInPlural('Images')
-            ->setEntityLabelInSingular('Image');
+            ->setEntityLabelInSingular('Image')
+            ;
     }
 
 
@@ -31,7 +34,11 @@ class ImageCrudController extends AbstractCrudController
                 ->hideOnIndex()
                 ->hideOnForm(),
             TextField::new('title'),
-
+            TextField::new('imageFile')
+                ->setFormType(VichImageType::class),
+            ImageField::new('imageFile')
+                ->setBasePath('/uploads/images')
+                ->onlyOnIndex()
         ];
     }
 
