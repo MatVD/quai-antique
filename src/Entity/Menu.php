@@ -24,7 +24,7 @@ class Menu
     private ?string $price = null;
 
     #[ORM\ManyToOne(inversedBy: 'menus')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     private ?User $admin = null;
 
     public function getId(): ?int

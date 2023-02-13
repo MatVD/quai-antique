@@ -14,8 +14,8 @@ class Schedules
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
-    private ?\DateTimeInterface $days = null;
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $days = null;
 
     #[ORM\Column(type: Types::TIME_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $openingHours = null;
@@ -24,7 +24,7 @@ class Schedules
     private ?\DateTimeInterface $closingHours = null;
 
     #[ORM\ManyToOne(inversedBy: 'schedules')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     private ?User $admin = null;
 
     public function getId(): ?int
@@ -32,17 +32,22 @@ class Schedules
         return $this->id;
     }
 
-    public function getDays(): ?\DateTimeInterface
+    /**
+     * @return string|null
+     */
+    public function getDays(): ?string
     {
         return $this->days;
     }
 
-    public function setDays(?\DateTimeInterface $days): self
+    /**
+     * @param string|null $days
+     */
+    public function setDays(?string $days): void
     {
         $this->days = $days;
-
-        return $this;
     }
+
 
     public function getOpeningHours(): ?\DateTimeInterface
     {
