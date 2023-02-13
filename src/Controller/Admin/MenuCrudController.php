@@ -7,11 +7,9 @@ use App\Entity\User;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\Field;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\MoneyField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
 class MenuCrudController extends AbstractCrudController
@@ -37,7 +35,7 @@ class MenuCrudController extends AbstractCrudController
                 ->hideOnForm()
                 ->hideOnIndex(),
             TextField::new('title', 'Titre'),
-            TextEditorField::new('description', 'Description'),
+            TextareaField::new('description', 'Description'),
             MoneyField::new('price', 'Prix')->setCurrency('EUR'),
             AssociationField::new('admin', 'Admin')
                 ->setValue($this->getUser())
