@@ -33,8 +33,10 @@ class SchedulesCrudController extends AbstractCrudController
                 ->hideOnForm()
                 ->hideOnIndex(),
             TextField::new('days', 'Jour de la semaine'),
-            TimeField::new('openingHours', 'Horaires d\'ouverture'),
-            TimeField::new('closingHours', 'Horaires de fermeture')
+            TimeField::new('AMopeningHours', 'Horaires d\'ouverture - Midi'),
+            TimeField::new('AMclosingHours', 'Horaires de fermeture - Midi'),
+            TimeField::new('PMopeningHours', 'Horaires d\'ouverture - Soir'),
+            TimeField::new('PMclosingHours', 'Horaires de fermeture - Soir')
 
         ];
     }
