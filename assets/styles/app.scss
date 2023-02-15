@@ -1,3 +1,21 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+
+div.imgBanner {
+  background-image: url('../../public/uploads/images/quaiantiquelogo-63ecbf9c6af68015367382.png');
+  height: 400px;
+  background-position: center;
+}
+
+@media (min-width: 576px) {
+  div.imgBanner {
+    height: 500px;
+  }
+}
+
+@media (min-width: 976px) {
+  div.imgBanner {
+    height: 650px;
+  }
+}

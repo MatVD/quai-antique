@@ -4,19 +4,13 @@
 
 {% block body %}
 
-    <!-- Jumbotron -->
-    <div class="imgBanner text-center relative overflow-hidden bg-no-repeat bg-cover"
-            style='background-image: url("{{ asset('uploads/images/quaiantiquelogo-63ecb145a9fb1695760044.png') }}");
-                    height: 400px;
-                    background-position: center;
-                    @media screen and (min-width: 576px) {
-                        height: 500px;
-                    };'>
+    <!-- Image Banner -->
+    <div class="imgBanner text-center relative overflow-hidden bg-no-repeat bg-cover">
         <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed">
             <div class="flex justify-center items-end h-full">
-                <div class="text-gold-brown my-6 md:mb-2 md:mt-9">
+                <div class="text-gold-brown my-6">
                     <h1 class="font-semibold text-xl mb-12">Authentique et raffiné</h1>
-                    <a class="inline-block px-7 py-3 mb-1 border-2 border-gold-ligth text-gold-brown font-medium text-sm leading-snug uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
+                    <a class="inline-block px-11 py-3 mb-1 border-2 border-gold-ligth text-gold-brown font-medium text-sm leading-snug uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
                        href="{{ path('app_book_table') }}"
                        role="button"
                        data-mdb-ripple="true"
@@ -26,31 +20,53 @@
             </div>
         </div>
     </div>
-    <!-- Jumbotron -->
+    <!-- Image Banner -->
 
 
+    <!-- Images plats -->
     <section class="overflow-hidden text-gray-700">
-        <div class="container py-2 px-2 mx-auto lg:pt-12 lg:px-12">
+        <div class="container px-2 mx-auto mt-20 lg:px-12">
             <h2 class="text-2xl text-center mb-10">Nos spécialités à déguster</h2>
             <div class="flex flex-wrap -m-1 md:-m-2">
                 {% for image in images %}
-                    <div class="flex flex-wrap md:w-1/3">
-                        <div class="w-full p-1 md:p-2">
-                            <img alt={{ image.title }}
-                                 title={{ image.title }}
-                                 src="uploads/images/{{ image.file }}"
-                                 class="block object-cover object-center w-full h-full rounded"/>
+                    {% if image.title != 'imageBanner' %}
+                        <div class="flex flex-wrap md:w-1/3">
+                            <div class="w-full p-1 md:p-2">
+                                <img alt={{ image.title }}
+                                     title={{ image.title }}
+                                     src="uploads/images/{{ image.file }}"
+                                     class="block object-cover object-center w-full h-full rounded"/>
+                            </div>
                         </div>
-                    </div>
+                    {% else %}
+                        <div class="hidden"></div>
+                    {% endif %}
                 {% endfor %}
             </div>
             <div class="flex space-x-2 justify-center mt-10">
                 <button type="button"
-                        class="inline-block px-6 py-2.5 bg-gold-brown text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">
+                        class="inline-block px-11 py-2.5
+                        bg-gold-brown
+                        text-white font-medium text-xs leading-tight uppercase
+                        rounded shadow-md
+                        hover:shadow-lg hover:scale-110
+                        focus:shadow-lg focus:outline-none focus:ring-0
+                        active:shadow-lg transition duration-150 ease-in-out">
                     Réserver
                 </button>
             </div>
         </div>
     </section>
+    <!-- Images plats -->
 
+    <div class="text-center mt-20">
+        <h2 class="text-2xl">Nos ingrédients locaux</h2>
+        <p>Tous nos ingrédients sont de chez nous. Nos producteurs sont nos voisins ! <br> Nos régions ont du talent !</p>
+    </div>
+
+    <div class="text-center mt-20">
+        // TODO => contact form
+    </div>
+
+    {% include 'footer/_footer.html.twig' %}
 {% endblock %}

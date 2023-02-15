@@ -31,23 +31,23 @@ navbar navbar-expand-lg navbar-light
         </button>
         <div class="collapse navbar-collapse flex-grow items-center align-middle w-full" id="navbarSupportedContent">
             <!-- Left links -->
-            <ul class="navbar-nav flex flex-col items-center pl-0 list-style-none mx-auto my-2">
-                <li class="nav-item px-10">
+            <ul class="navbar-nav text-xl flex flex-col items-center pl-0 list-style-none mx-auto my-2">
+                <li class="nav-item px-10 py-2">
                     <a class="nav-link text-gray-800 hover:text-gray-400 focus:text-gray-700 p-0" href={{ path('app_book_table') }}>Réservation</a>
                 </li>
-                <li class="nav-item px-10">
+                <li class="nav-item px-10 py-2">
                     <a class="nav-link text-gray-800 hover:text-gray-400 focus:text-gray-700 p-0" href={{ path('app_home') }}>Accueil</a>
                 </li>
-                <li class="nav-item lg:px-12 lg:h-10">
+                <li class="nav-item lg:px-12 lg:h-10 py-2 lg:py-0">
                     <div class="flex flex-col items-center">
                         <div class="hidden lg:block"><img src="{{ asset('uploads/images/utilisateur.png') }}" width="32" height="32" alt="compte" class="cursor-pointer"></img></div>
                         <a class="nav-link text-gray-800 hover:text-gray-400 focus:text-gray-700 p-0 block" href={{ path('app_login') }}>Mon compte</a>
                     </div>
                 </li>
-                <li class="nav-item px-10">
+                <li class="nav-item px-10 py-2">
                     <a class="nav-link text-gray-800 hover:text-gray-400 focus:text-gray-700 p-0" href={{ path('app_menu_card') }}>Carte et Menus</a>
                 </li>
-                <li class="nav-item px-10">
+                <li class="nav-item px-10 py-2">
                     <a class="nav-link text-gray-800 hover:text-gray-400 focus:text-gray-700 p-0" href={{ path('app_home') }}>Contact</a>
                 </li>
             </ul>

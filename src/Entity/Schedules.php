@@ -18,10 +18,16 @@ class Schedules
     private ?string $days = null;
 
     #[ORM\Column(type: Types::TIME_MUTABLE, nullable: true)]
-    private ?\DateTimeInterface $openingHours = null;
+    private ?\DateTimeInterface $AMopeningHours = null;
 
     #[ORM\Column(type: Types::TIME_MUTABLE, nullable: true)]
-    private ?\DateTimeInterface $closingHours = null;
+    private ?\DateTimeInterface $AMclosingHours = null;
+
+    #[ORM\Column(type: Types::TIME_MUTABLE, nullable: true)]
+    private ?\DateTimeInterface $PMopeningHours = null;
+
+    #[ORM\Column(type: Types::TIME_MUTABLE, nullable: true)]
+    private ?\DateTimeInterface $PMclosingHours = null;
 
     #[ORM\ManyToOne(inversedBy: 'schedules')]
     #[ORM\JoinColumn(nullable: true)]
@@ -32,45 +38,55 @@ class Schedules
         return $this->id;
     }
 
-    /**
-     * @return string|null
-     */
+    public function getAMopeningHours(): ?\DateTimeInterface
+    {
+        return $this->AMopeningHours;
+    }
+
+
+    public function setAMopeningHours(?\DateTimeInterface $AMopeningHours): void
+    {
+        $this->AMopeningHours = $AMopeningHours;
+    }
+
+    public function getAMclosingHours(): ?\DateTimeInterface
+    {
+        return $this->AMclosingHours;
+    }
+
+    public function setAMclosingHours(?\DateTimeInterface $AMclosingHours): void
+    {
+        $this->AMclosingHours = $AMclosingHours;
+    }
+
+    public function getPMopeningHours(): ?\DateTimeInterface
+    {
+        return $this->PMopeningHours;
+    }
+
+    public function setPMopeningHours(?\DateTimeInterface $PMopeningHours): void
+    {
+        $this->PMopeningHours = $PMopeningHours;
+    }
+
+    public function getPMclosingHours(): ?\DateTimeInterface
+    {
+        return $this->PMclosingHours;
+    }
+
+    public function setPMclosingHours(?\DateTimeInterface $PMclosingHours): void
+    {
+        $this->PMclosingHours = $PMclosingHours;
+    }
+
     public function getDays(): ?string
     {
         return $this->days;
     }
 
-    /**
-     * @param string|null $days
-     */
     public function setDays(?string $days): void
     {
         $this->days = $days;
-    }
-
-
-    public function getOpeningHours(): ?\DateTimeInterface
-    {
-        return $this->openingHours;
-    }
-
-    public function setOpeningHours(?\DateTimeInterface $openingHours): self
-    {
-        $this->openingHours = $openingHours;
-
-        return $this;
-    }
-
-    public function getClosingHours(): ?\DateTimeInterface
-    {
-        return $this->closingHours;
-    }
-
-    public function setClosingHours(?\DateTimeInterface $closingHours): self
-    {
-        $this->closingHours = $closingHours;
-
-        return $this;
     }
 
     public function getAdmin(): ?User

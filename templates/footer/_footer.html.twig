@@ -1,3 +1,63 @@
-<footer>
 
+<footer class="bg-gray-100 text-center lg:text-left w-full mt-20">
+    <div class="container p-6 ">
+        <div class="flex justify-around w-full">
+            <div class="mb-6">
+                <h2 class="uppercase font-bold mb-2.5 text-gray-800">Horaires</h2>
+                <ul class="list-none mb-0">
+                    {% for schedule in schedules %}
+                        {% if not schedule.openingHours %}
+                            <li>{{ schedule.days }} : Fermé</li>
+                        {% else %}
+                            <li>{{ schedule.days }} : {{ schedule.openingHours|date('H \\h i') }} / {{ schedule.closingHours|date('H \\h i') }}</li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+
+
+            <div class="mb-6">
+                <h5 class="uppercase font-bold mb-2.5 text-gray-800">Links</h5>
+
+                <ul class="list-none mb-0">
+                    <li>
+                        <a href="#!" class="text-gray-800">Link 1</a>
+                    </li>
+                    <li>
+                        <a href="#!" class="text-gray-800">Link 2</a>
+                    </li>
+                    <li>
+                        <a href="#!" class="text-gray-800">Link 3</a>
+                    </li>
+                    <li>
+                        <a href="#!" class="text-gray-800">Link 4</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="mb-6">
+                <h5 class="uppercase font-bold mb-2.5 text-gray-800">Links</h5>
+
+                <ul class="list-none mb-0">
+                    <li>
+                        <a href="#!" class="text-gray-800">Link 1</a>
+                    </li>
+                    <li>
+                        <a href="#!" class="text-gray-800">Link 2</a>
+                    </li>
+                    <li>
+                        <a href="#!" class="text-gray-800">Link 3</a>
+                    </li>
+                    <li>
+                        <a href="#!" class="text-gray-800">Link 4</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-gray-700 text-center p-4" style="background-color: rgba(0, 0, 0, 0.2);">
+        © 2023 Copyright:
+        <a class="text-gray-800" href="https://mat-site-web.com/">Mathieu VAN DAMME</a>
+    </div>
 </footer>
