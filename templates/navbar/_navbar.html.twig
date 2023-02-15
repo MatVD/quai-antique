@@ -1,4 +1,4 @@
-<nav class="
+<nav class="z-10
 relative
 w-full
 flex flex-wrap
@@ -6,14 +6,14 @@ items-center
 justify-between
 py-4
 bg-gray-100
-text-gray-500
-focus:text-gray-700
+text-gray-800
+focus:text-gray-400
 navbar navbar-expand-lg navbar-light
 ">
     <div class="container-fluid w-full flex flex-wrap items-center justify-center px-6">
         <button class="
         navbar-toggler
-        text-gray-500
+        text-gray-800
         border-0
         hover:shadow-none hover:no-underline
         py-2
@@ -32,28 +32,27 @@ navbar navbar-expand-lg navbar-light
         <div class="collapse navbar-collapse flex-grow items-center align-middle w-full" id="navbarSupportedContent">
             <!-- Left links -->
             <ul class="navbar-nav flex flex-col items-center pl-0 list-style-none mx-auto my-2">
-                <li class="nav-item px-6">
-                    <a class="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0" href={{ path('app_book_table') }}>Réservation</a>
+                <li class="nav-item px-10">
+                    <a class="nav-link text-gray-800 hover:text-gray-400 focus:text-gray-700 p-0" href={{ path('app_book_table') }}>Réservation</a>
                 </li>
-                <li class="nav-item px-6">
-                    <a class="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0" href={{ path('app_menu_card') }}>Carte</a>
+                <li class="nav-item px-10">
+                    <a class="nav-link text-gray-800 hover:text-gray-400 focus:text-gray-700 p-0" href={{ path('app_home') }}>Accueil</a>
                 </li>
                 <li class="nav-item lg:px-12 lg:h-10">
-                    <div class="flex flex-col items-center hover:text-gray-700 focus:text-gray-700">
-                        <div class="hidden lg:block"><span class="fa-solid fa-user fa-2xl mt-2 mb-3 cursor-pointer"></span></div>
-                        <a class="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0 block" href={{ path('app_login') }}>Mon compte</a>
+                    <div class="flex flex-col items-center">
+                        <div class="hidden lg:block"><img src="{{ asset('uploads/images/utilisateur.png') }}" width="32" height="32" alt="compte" class="cursor-pointer"></img></div>
+                        <a class="nav-link text-gray-800 hover:text-gray-400 focus:text-gray-700 p-0 block" href={{ path('app_login') }}>Mon compte</a>
                     </div>
                 </li>
-                <li class="nav-item px-6">
-                    <a class="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0" href={{ path('app_menu_card') }}>Menus</a>
+                <li class="nav-item px-10">
+                    <a class="nav-link text-gray-800 hover:text-gray-400 focus:text-gray-700 p-0" href={{ path('app_menu_card') }}>Carte et Menus</a>
                 </li>
-                <li class="nav-item px-6">
-                    <a class="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0" href={{ path('app_home') }}>Contact</a>
+                <li class="nav-item px-10">
+                    <a class="nav-link text-gray-800 hover:text-gray-400 focus:text-gray-700 p-0" href={{ path('app_home') }}>Contact</a>
                 </li>
             </ul>
             <!-- Left links -->
         </div>
         <!-- Collapsible wrapper -->
     </div>
-    <img src= width="640" height="427" alt="Restaurant">
 </nav>

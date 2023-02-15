@@ -42,7 +42,7 @@ class Image
         return $this->file;
     }
 
-    public function setFile(string $file): void
+    public function setFile(?string $file): void
     {
         $this->file = $file;
     }
