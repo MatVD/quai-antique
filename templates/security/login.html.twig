@@ -3,8 +3,7 @@
 {% block title %}Quai Antique | Connexion{% endblock %}
 
 {% block body %}
-
-
+{# ----------  Section login ------------ #}
     <section class="w-full h-full">
         <form class="mx-auto" method="post">
             {% if error %}
@@ -13,6 +12,7 @@
                 </p>
             {% endif %}
 
+    {# ----------  si ROLE_ADMIN ------------ #}
             {% if is_granted('ROLE_ADMIN') %}
             <div class="block p-6 m-8 rounded-lg shadow-lg bg-white text-center max-w-md mx-auto">
                 <h1><span class="italic">{{ app.user.userIdentifier }}</span></h1>
@@ -22,7 +22,56 @@
                 <h3>Que souhaitez-vous faire ?</h3>
             </div>
 
+
             <div class="flex flex-col md:flex-row justify-around w-full ">
+            {# ----------  DECONNEXION ------------ #}
+                <div class="rounded-lg shadow-lg bg-white max-w-sm mx-auto m-2">
+                    <a href="{{ path('app_logout') }}">
+                        <img class="rounded-t-lg" src="{{ asset('uploads/images/image accueil.png') }}" alt=""/>
+                        <div class="p-6 text-center">
+                            <button type="button"
+                                    class="inline-block px-6 py-2.5
+                                bg-blue-600 text-white font-medium text-xs leading-tight uppercase
+                                rounded shadow-md hover:bg-blue-700
+                                hover:shadow-lg
+                                focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0
+                                active:bg-blue-800 active:shadow-lg
+                                transition duration-150 ease-in-out">
+                                Se déconnecter
+                            </button>
+                        </div>
+                    </a>
+                </div>
+            {# ----------  ADMINISTRATION ------------ #}
+                <div class="rounded-lg shadow-lg bg-white max-w-sm mx-auto m-2">
+                    <a href="{{ path('admin') }}">
+                        <img class="rounded-t-lg" src="{{ asset('uploads/images/image administration.png') }}" alt=""/>
+                        <div class="p-6 text-center">
+                            <button type="button"
+                                    class="inline-block px-6 py-2.5
+                                bg-blue-600 text-white font-medium text-xs leading-tight uppercase
+                                rounded shadow-md hover:bg-blue-700
+                                hover:shadow-lg
+                                focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0
+                                active:bg-blue-800 active:shadow-lg
+                                transition duration-150 ease-in-out">
+                                Aller sur la page d'administration
+                            </button>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+    {# ----------  si ROLE_USER ------------ #}
+            {% elseif is_granted('ROLE_USER') %}
+            <div class="block p-6 m-8 rounded-lg shadow-lg bg-white text-center max-w-md mx-auto">
+            {# ----------  DECONNEXION ------------ #}
+                <h1><span class="italic">{{ app.user.userIdentifier }}</span></h1>
+                <h2>
+                    Vous êtes déjà connecté
+                </h2>
+                <h3>Que souhaitez-vous faire ?</h3>
+
                 <div class="rounded-lg shadow-lg bg-white max-w-sm mx-auto m-2">
                     <a href="{{ path('app_logout') }}">
                         <img class="rounded-t-lg" src="{{ asset('uploads/images/image accueil.png') }}" alt=""/>
@@ -40,28 +89,11 @@
                         </button>
                     </div>
                 </div>
-                <div class="rounded-lg shadow-lg bg-white max-w-sm mx-auto m-2">
-                    <a href="{{ path('admin') }}">
-                        <img class="rounded-t-lg" src="{{ asset('uploads/images/image administration.png') }}" alt=""/>
-                    </a>
-                    <div class="p-6 text-center">
-                        <button type="button"
-                                class="inline-block px-6 py-2.5
-                                bg-blue-600 text-white font-medium text-xs leading-tight uppercase
-                                rounded shadow-md hover:bg-blue-700
-                                hover:shadow-lg
-                                focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0
-                                active:bg-blue-800 active:shadow-lg
-                                transition duration-150 ease-in-out">
-                            Aller sur la page d'administration
-                        </button>
-                    </div>
-                </div>
             </div>
 
+    {# ----------  si VISITEUR ------------ #}
             {% else %}
-
-            <div class="block p-6 rounded-lg shadow-lg bg-white max-w-sm mx-auto translate-y-1/3">
+            <div class="block p-6 rounded-lg shadow-lg bg-white max-w-sm mx-auto mt-14 md:translate-y-1/3 md:mt-0">
                 <h1 class="text-2xl mb-3 font-weight-normal text-center">Connexion</h1>
                 <div class="form-group mb-6">
                     <label for="formEmail"
@@ -133,15 +165,6 @@
             <input type="hidden" name="_csrf_token"
                    value="{{ csrf_token('authenticate') }}">
         </form>
-
-
-
-
             {% endif %}
-
-
-
-
     </section>
-
 {% endblock %}
