@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tables index{% endblock %}
+
+{% block body %}
+
+<div class="block p-6 rounded-lg shadow-lg bg-white max-w-sm">
+    {{ form_start(form) }}
+    {{ form_row(form.user) }}
+    {{ form_row(form.seats, {attr: {'class': 'block w-full px-3 py-1.5
+                        text-base font-normal
+                        text-gray-700
+                        bg-white bg-clip-padding
+                        border border-solid border-gray-300
+                        rounded
+                        transition ease-in-out m-0
+                        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none'}, label: 'Nombre de personnes'}) }}
+    {{ form_row(form.) }}
+    {{ form_row(form.free) }}
+    <button class="btn">{{ button_label|default('Save') }}</button>
+    {{ form_end(form) }}
+</div>
+
+{#    <form method="post" action="{{ path('app_book_table', {'id': table.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">#}
+{#        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ table.id) }}">#}
+{#        <button class="btn">Delete</button>#}
+{#    </form>#}
+
+{% endblock %}
