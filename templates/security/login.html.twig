@@ -108,9 +108,10 @@
                 </div>
             </div>
 
+
     {# ----------  si VISITEUR ------------ #}
             {% else %}
-            <div class="block p-6 rounded-lg shadow-lg bg-white max-w-sm mx-auto mt-14 md:translate-y-1/3 md:mt-0">
+            <div class="block p-6 rounded-lg shadow-lg bg-white max-w-sm mx-auto mt-20">
                 <h1 class="text-2xl mb-3 font-weight-normal text-center">Connexion</h1>
                 <div class="form-group mb-6">
                     <label for="formEmail"
@@ -164,9 +165,9 @@
                             text-white font-medium text-xs leading-tight uppercase
                             rounded
                             shadow-md
-                            hover:bg-blue-700 hover:shadow-lg
-                            focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0
-                            active:bg-blue-800 active:shadow-lg
+                            hover:shadow-lg
+                            focus:shadow-lg focus:outline-none focus:ring-0
+                            active:shadow-lg
                             transition
                             duration-150
                             ease-in-out">Se connecter
@@ -184,4 +185,9 @@
         </form>
             {% endif %}
     </section>
+{% endblock %}
+{% block footer %}
+    {{ render(controller(
+        'App\\Controller\\FooterController::index'
+    )) }}
 {% endblock %}

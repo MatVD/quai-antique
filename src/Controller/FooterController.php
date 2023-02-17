@@ -12,7 +12,7 @@ class FooterController extends AbstractController
     {
         $schedules = $schedulesRepository->findAll();
 
-        return $this->render('home/index.html.twig', [
+        return $this->render('footer/_footer.html.twig', [
             'schedules' => $schedules
         ]);
     }
