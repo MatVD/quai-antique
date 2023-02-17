@@ -5,21 +5,21 @@ flex flex-wrap
 items-center
 justify-between
 py-4
-bg-gray-100
-text-gray-800
-focus:text-gray-400
+bg-black
+text-white
+focus:text-gray-100
 navbar navbar-expand-lg navbar-light
 ">
     <div class="container-fluid w-full flex flex-wrap items-center justify-center px-6">
         <button class="
         navbar-toggler
-        text-gray-800
+        text-white
         border-0
         hover:shadow-none hover:no-underline
         py-2
         px-2.5
         bg-transparent
-        focus:outline-none focus:ring-0 focus:shadow-none focus:no-underline"
+        focus:outline-none focus:ring-0 focus:shadow-none focus:no-underline cursor-pointer"
                 type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="bars"
@@ -33,22 +33,23 @@ navbar navbar-expand-lg navbar-light
             <!-- Left links -->
             <ul class="navbar-nav text-xl flex flex-col items-center pl-0 list-style-none mx-auto my-2">
                 <li class="nav-item px-10 py-2">
-                    <a class="nav-link text-gray-800 hover:text-gray-400 focus:text-gray-700 p-0" href={{ path('app_book_table') }}>Réservation</a>
+                    <a class="nav-link text-white hover:text-gold-ligth p-0" href={{ path('app_book_table') }}>Réservation</a>
                 </li>
                 <li class="nav-item px-10 py-2">
-                    <a class="nav-link text-gray-800 hover:text-gray-400 focus:text-gray-700 p-0" href={{ path('app_home') }}>Accueil</a>
+                    <a class="nav-link text-white hover:text-gold-ligth p-0" href={{ path('app_home') }}>Accueil</a>
                 </li>
                 <li class="nav-item lg:px-12 lg:h-10 py-2 lg:py-0">
                     <div class="flex flex-col items-center">
-                        <div class="hidden lg:block"><img src="{{ asset('uploads/images/utilisateur.png') }}" width="32" height="32" alt="compte" class="cursor-pointer"></img></div>
-                        <a class="nav-link text-gray-800 hover:text-gray-400 focus:text-gray-700 p-0 block" href={{ path('app_login') }}>Mon compte</a>
+                        <a class="nav-link text-white hover:text-gold-ligth p-0 block" href={{ path('app_login') }}>
+                        <div class="hidden lg:block"><img src="{{ asset('uploads/images/user.png') }}" width="32" height="32" alt="compte" class="cursor-pointer bg-white rounded-full p-1 mx-auto"></img></div>
+                        Connexion</a>
                     </div>
                 </li>
                 <li class="nav-item px-10 py-2">
-                    <a class="nav-link text-gray-800 hover:text-gray-400 focus:text-gray-700 p-0" href={{ path('app_menu_card') }}>Carte et Menus</a>
+                    <a class="nav-link text-white hover:text-gold-ligth p-0" href={{ path('app_menu_card') }}>Carte/Menus</a>
                 </li>
                 <li class="nav-item px-10 py-2">
-                    <a class="nav-link text-gray-800 hover:text-gray-400 focus:text-gray-700 p-0" href="/#contact">Contact</a>
+                    <a class="nav-link text-white hover:text-gold-ligth p-0" href="/#contact">Contact</a>
                 </li>
             </ul>
             <!-- Left links -->
