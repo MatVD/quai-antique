@@ -12,14 +12,23 @@ use Symfony\Component\Routing\Annotation\Route;
 class MenuCardController extends AbstractController
 {
     #[Route('/carte', name: 'app_menu_card')]
-    public function index(MenuRepository $menuRepository, DishRepository $dishRepository): Response
+    public function index(MenuRepository $menuRepository, DishRepository $dishRepository, CategoriesRepository $categoriesRepository): Response
     {
+
+        $categories = $categoriesRepository->findAll();
 
         $dishes = $dishRepository->findAll();
 
+        $menus = $menuRepository->findAll();
 
         return $this->render('menu_card/index.html.twig', [
-            'dishes' => $dishes
+            'dishes' => $dishes,
+            'categories' => $categories,
+            'menus' => $menus
         ]);
+
+
+
     }
+
 }

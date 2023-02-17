@@ -42,13 +42,12 @@ class DishRepository extends ServiceEntityRepository
 //    /**
 //     * @return Dish[] Returns an array of Dish objects
 //     */
-//    public function findByExampleField($value): array
+//    public function findByCategory($value): array
 //    {
 //        return $this->createQueryBuilder('d')
-//            ->andWhere('d.exampleField = :val')
+//            ->andWhere('d.title = :val')
 //            ->setParameter('val', $value)
 //            ->orderBy('d.id', 'ASC')
-//            ->setMaxResults(10)
 //            ->getQuery()
 //            ->getResult()
 //        ;
