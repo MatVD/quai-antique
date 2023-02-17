@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\TablesRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: TablesRepository::class)]
@@ -21,6 +22,12 @@ class Tables
 
     #[ORM\ManyToOne(inversedBy: 'tables')]
     private ?User $user = null;
+
+    #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
+    private ?\DateTimeInterface $date = null;
+
+    #[ORM\Column(type: Types::TIME_MUTABLE, nullable: true)]
+    private ?\DateTimeInterface $arrival_time = null;
 
     public function getId(): ?int
     {
@@ -59,6 +66,30 @@ class Tables
     public function setUser(?User $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getDate(): ?\DateTimeInterface
+    {
+        return $this->date;
+    }
+
+    public function setDate(?\DateTimeInterface $date): self
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    public function getArrivalTime(): ?\DateTimeInterface
+    {
+        return $this->arrival_time;
+    }
+
+    public function setArrivalTime(?\DateTimeInterface $arrival_time): self
+    {
+        $this->arrival_time = $arrival_time;
 
         return $this;
     }

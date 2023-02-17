@@ -7,6 +7,7 @@ use App\Entity\Dish;
 use App\Entity\Image;
 use App\Entity\Menu;
 use App\Entity\Schedules;
+use App\Entity\Tables;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
@@ -38,5 +39,6 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Catégories', 'fa-solid fa-list-ul', Categories::class);
         yield MenuItem::linkToCrud('Horaires', 'fa-solid fa-calendar-days', Schedules::class);
         yield MenuItem::linkToCrud('Images', 'fa-regular fa-image', Image::class);
+        yield MenuItem::linkToCrud('Tables','fa-solid fa-utensils',Tables::class);
     }
 }

@@ -175,9 +175,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    /**
-     * @return Collection<int, Tables>
-     */
     public function getTables(): Collection
     {
         return $this->tables;
@@ -205,9 +202,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    /**
-     * @return Collection<int, Schedules>
-     */
     public function getSchedules(): Collection
     {
         return $this->schedules;
@@ -235,9 +229,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    /**
-     * @return Collection<int, Image>
-     */
     public function getImages(): Collection
     {
         return $this->images;
@@ -265,9 +256,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    /**
-     * @return Collection<int, Menu>
-     */
     public function getMenus(): Collection
     {
         return $this->menus;
@@ -295,9 +283,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    /**
-     * @return Collection<int, Dish>
-     */
     public function getDishes(): Collection
     {
         return $this->dishes;
@@ -323,5 +308,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         }
 
         return $this;
+    }
+
+    public function __toString(): string
+    {
+        return $this->name;
     }
 }
