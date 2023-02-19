@@ -42,7 +42,7 @@ class TablesRepository extends ServiceEntityRepository
     /**
      * @return Tables[] Returns an array of Tables objects
      */
-    public function findByTableFree($value): array
+    public function findAllTableFree($value): array
     {
         return $this->createQueryBuilder('t')
             ->andWhere('t.free = :val')

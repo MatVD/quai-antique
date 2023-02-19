@@ -4,7 +4,7 @@
 
 {% block body %}
 
-    <div class="block p-6 rounded-lg shadow-lg bg-white max-w-sm mx-auto mt-20">
+    <div class="block p-6 rounded-lg shadow-lg bg-white max-w-xs mx-auto mt-20">
         <h1 class="text-2xl mb-3 font-weight-normal text-center">S'enregistrer</h1>
 
             {{ form_start(registrationForm) }}
@@ -63,10 +63,5 @@
 
             {{ form_end(registrationForm) }}
     </div>
-{% endblock %}
-{% block footer %}
-    {{ render(controller(
-        'App\\Controller\\FooterController::index'
-    )) }}
 {% endblock %}
 

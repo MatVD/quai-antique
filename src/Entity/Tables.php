@@ -29,6 +29,9 @@ class Tables
     #[ORM\Column(type: Types::TIME_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $arrival_time = null;
 
+    #[ORM\Column(nullable: true)]
+    private array $allergies = [];
+
     public function getId(): ?int
     {
         return $this->id;
@@ -90,6 +93,18 @@ class Tables
     public function setArrivalTime(?\DateTimeInterface $arrival_time): self
     {
         $this->arrival_time = $arrival_time;
+
+        return $this;
+    }
+
+    public function getAllergies(): array
+    {
+        return $this->allergies;
+    }
+
+    public function setAllergies(?array $allergies): self
+    {
+        $this->allergies = $allergies;
 
         return $this;
     }

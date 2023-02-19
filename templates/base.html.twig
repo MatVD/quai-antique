@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial">
         <title>{% block title %}Welcome!{% endblock %}</title>
+        <script src="https://kit.fontawesome.com/6e99e97248.js" crossorigin="anonymous"></script>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
         <meta name="description" content="Quai Antique | Restaurant gastronomique et raffiné. Une cuisine authentique nourrit par la passion de la saveur !">
         {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
@@ -11,13 +12,17 @@
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
 
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-        {% endblock %}
     </head>
     <body>
         {% include 'navbar/_navbar.html.twig' %}
         {% block body %}{% endblock %}
-        {% block footer %}{% include 'footer/_footer.html.twig' %}{% endblock %}
+        {% block footer %}
+            {{ render(controller(
+                'App\\Controller\\FooterController::index'
+            )) }}
+        {% endblock %}
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
     </body>
 </html>
