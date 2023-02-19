@@ -8,7 +8,7 @@
 <section class="w-full text-center">
     <h1 class="text-4xl mt-14">Quai Antique</h1>
     <h2 class="text-2xl">Carte du restaurant</h2>
-    <div class="flex flex-row flex-wrap justify-around">
+    <div class="flex flex-row flex-wrap justify-around max-w-6xl mx-auto">
     {% for category in categories %}
         <div class="text-center max-w-md m-8">
         <h2 class="text-xl">{{ category.title }}</h2>
@@ -48,7 +48,7 @@
 {# ---------- Section Menu du restaurant ---------- #}
     <section class="w-full text-center">
         <h2 class="text-2xl">Menus</h2>
-        <div class="flex flex-row flex-wrap justify-around">
+        <div class="flex flex-row flex-wrap justify-around max-w-6xl mx-auto">
             {% for menu in menus %}
                 <div class="max-w-md mx-auto m-8">
                     <h3 class="text-xl"> {{ menu.title }} - <span class="text-lg">{{ (menu.price / 100) | format_number({fraction_digit : 2}) }}€</span></h3>

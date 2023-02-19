@@ -54,10 +54,10 @@ class TablesRepository extends ServiceEntityRepository
         ;
     }
 
-//    public function findOneBySomeField($value): ?Tables
+//    public function findOneTableFree($value): ?Tables
 //    {
 //        return $this->createQueryBuilder('t')
-//            ->andWhere('t.exampleField = :val')
+//            ->andWhere('t.free = :val')
 //            ->setParameter('val', $value)
 //            ->getQuery()
 //            ->getOneOrNullResult()

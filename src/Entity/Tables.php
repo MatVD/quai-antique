@@ -3,7 +3,9 @@
 namespace App\Entity;
 
 use App\Repository\TablesRepository;
+use Doctrine\DBAL\Types\DateType;
 use Doctrine\DBAL\Types\Types;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: TablesRepository::class)]
@@ -12,25 +14,27 @@ class Tables
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Assert\NotBlank]
     private ?int $id = null;
 
-    #[ORM\Column]
-    private ?int $seats = null;
-
-    #[ORM\Column]
-    private ?bool $free = null;
-
-    #[ORM\ManyToOne(inversedBy: 'tables')]
-    private ?User $user = null;
-
-    #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
-    private ?\DateTimeInterface $date = null;
-
-    #[ORM\Column(type: Types::TIME_MUTABLE, nullable: true)]
-    private ?\DateTimeInterface $arrival_time = null;
+    #[ORM\Column(nullable: true)]
+    #[Assert\PositiveOrZero]
+    private ?int $seats = 0;
 
     #[ORM\Column(nullable: true)]
-    private array $allergies = [];
+    private ?bool $free = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?string $user = null;
+
+    #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
+    private ?\DateTimeInterface $date;
+
+    #[ORM\Column(type: Types::TIME_MUTABLE, nullable: true)]
+    private ?\DateTimeInterface $arrival_time;
+
+    #[ORM\Column(nullable: true)]
+    private array|string|null $allergies;
 
     public function getId(): ?int
     {
@@ -61,12 +65,12 @@ class Tables
         return $this;
     }
 
-    public function getUser(): ?User
+    public function getUser(): ?string
     {
         return $this->user;
     }
 
-    public function setUser(?User $user): self
+    public function setUser(?string $user): self
     {
         $this->user = $user;
 
@@ -97,12 +101,12 @@ class Tables
         return $this;
     }
 
-    public function getAllergies(): array
+    public function getAllergies(): array|string|null
     {
         return $this->allergies;
     }
 
-    public function setAllergies(?array $allergies): self
+    public function setAllergies(array|string|null $allergies): self
     {
         $this->allergies = $allergies;
 

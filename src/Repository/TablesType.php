@@ -3,8 +3,13 @@
 namespace App\Repository;
 
 use App\Entity\Tables;
+use App\Entity\User;
+use App\Form\RegistrationFormType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -19,7 +24,9 @@ class TablesType extends AbstractType
         $builder
             ->add('user', TextType::class)
             ->add('seats', IntegerType::class)
-            ->add('allergies', TextType::class)
+            ->add('allergies', TextType::class, [
+                'required' => false,
+            ])
             ->add('date', DateType::class)
             ->add('arrival_time', TimeType::class, [
                 'attr' => ['min' => '11:30', 'max' => '22:00']

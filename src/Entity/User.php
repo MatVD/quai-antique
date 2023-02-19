@@ -38,9 +38,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 150)]
     private ?string $name = null;
 
-    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Tables::class)]
-    private Collection $tables;
-
     #[ORM\OneToMany(mappedBy: 'admin', targetEntity: Schedules::class)]
     private Collection $schedules;
 
@@ -55,7 +52,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function __construct()
     {
-        $this->tables = new ArrayCollection();
         $this->schedules = new ArrayCollection();
         $this->images = new ArrayCollection();
         $this->menus = new ArrayCollection();
@@ -175,32 +171,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getTables(): Collection
-    {
-        return $this->tables;
-    }
-
-    public function addTable(Tables $table): self
-    {
-        if (!$this->tables->contains($table)) {
-            $this->tables->add($table);
-            $table->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeTable(Tables $table): self
-    {
-        if ($this->tables->removeElement($table)) {
-            // set the owning side to null (unless already changed)
-            if ($table->getUser() === $this) {
-                $table->setUser(null);
-            }
-        }
-
-        return $this;
-    }
 
     public function getSchedules(): Collection
     {
