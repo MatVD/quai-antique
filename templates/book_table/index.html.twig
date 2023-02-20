@@ -3,18 +3,16 @@
 {% block title %}Hello BookTableController!{% endblock %}
 
 {% block body %}
-    <h1 class="text-2xl my-4 font-weight-normal text-center underline">Réservation</h1>
-
-    <div class="mt-4 flex justify-center items-center">
-        <p id="nbTablesFreeP">
-    </div>
-
+    <h1 class="text-4xl mt-14 text-center">Quai Antique</h1>
+    <h2 class="text-4xl mt-9 font-weight-normal text-center underline">Réservation</h2>
 
 
 {# ---------- formulaire de réservation de table ------------- #}
 {# ----------------------------------------------------------- #}
     <div class="block p-4 rounded-lg shadow-lg bg-white max-w-xs mx-auto mt-14">
-
+        <div class="my-4 flex justify-center items-center ">
+            <i class="fa-solid fa-circle-info fa-xl mr-2 text-blue-lagoon"></i><p class="text-blue-lagoon" id="nbTablesFreeP"></p>
+        </div>
         {{ form_start(form) }}
             {# ---------- Nom pour la réservation ------------- #}
             <div class="form-group mb-6">

@@ -23,7 +23,7 @@
         {# ---------- Messages de succes, warning ou erreur ------------- #}
         {% for label, messages in app.flashes %}
             {% for message in messages %}
-                <div id="flash-popup" class="flex flex-col justify-center mt-6">
+                <div id="flash-popup" class="flex flex-col justify-center mt-10">
                     <div class="{{ label }} shadow-lg mx-auto max-w-3xl text-sm pointer-events-auto bg-clip-padding rounded-md block mb-3" id="static-example" role="alert" aria-live="assertive" aria-atomic="true" data-mdb-autohide="false">
                         <div class="{{ label }} flex justify-between items-center py-2 px-3 bg-clip-padding border-b border-white rounded-t-md">
                             <p class="font-bold text-white flex items-center">

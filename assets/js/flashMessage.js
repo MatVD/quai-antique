@@ -14,5 +14,5 @@ btnClose.onclick = ((e) => {
 // Le flash message se ferme au bouts de 10s
 setInterval(() => {
        btnClose.click();
-}, 10000)
+}, 15000)
 
