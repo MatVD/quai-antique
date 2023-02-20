@@ -12,3 +12,5 @@ import './styles/app.scss';
 import './bootstrap';
 
 import 'tw-elements';
+
+import './js/flashMessage';

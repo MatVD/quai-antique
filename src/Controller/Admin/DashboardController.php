@@ -24,10 +24,12 @@ class DashboardController extends AbstractDashboardController
         ]);
     }
 
+
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('Quai Antique - Administration');
+            ->setTitle('Quai Antique - Admin')
+            ;
     }
 
     public function configureMenuItems(): iterable

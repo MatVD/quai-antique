@@ -2,6 +2,20 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+// Configuration générale des polices
+h1 {
+  font-family: 'Libre Franklin', sans-serif;
+}
+
+h2, h3 {
+  font-family: 'Tangerine', cursive;
+}
+
+p {
+  font-family: 'Hind Madurai', sans-serif;
+}
+
+// Image principale de la page d'acceuil
 div.imgBanner {
   background-image: url('../../public/uploads/images/quaiantiquelogo-63ecbf9c6af68015367382.png');
   height: 400px;
@@ -17,5 +31,18 @@ div.imgBanner {
 @media (min-width: 976px) {
   div.imgBanner {
     height: 650px;
+  }
+}
+
+// personnalisation de styles pour les flash-messages
+@layer  {
+  .notice {
+    @apply bg-green-500
+  }
+  .warning {
+    @apply bg-yellow-500
+  }
+  .error {
+    @apply bg-red-500
   }
 }

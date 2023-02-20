@@ -5,7 +5,10 @@
         <meta name="viewport" content="width=device-width, initial">
         <title>{% block title %}Welcome!{% endblock %}</title>
         <script src="https://kit.fontawesome.com/6e99e97248.js" crossorigin="anonymous"></script>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221em%22 font-size=%2299%22> QA </text></svg>">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Hind+Madurai&family=Libre+Franklin&family=Tangerine&display=swap" rel="stylesheet">
         <meta name="description" content="Quai Antique | Restaurant gastronomique et raffiné. Une cuisine authentique nourrit par la passion de la saveur !">
         {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
         {% block stylesheets %}
@@ -16,6 +19,31 @@
     <body>
         {% include 'navbar/_navbar.html.twig' %}
         {% block body %}{% endblock %}
+
+        {# ---------- Messages de succes, warning ou erreur ------------- #}
+        {% for label, messages in app.flashes %}
+            {% for message in messages %}
+                <div id="flash-popup" class="flex flex-col justify-center mt-6">
+                    <div class="{{ label }} shadow-lg mx-auto max-w-3xl text-sm pointer-events-auto bg-clip-padding rounded-md block mb-3" id="static-example" role="alert" aria-live="assertive" aria-atomic="true" data-mdb-autohide="false">
+                        <div class="{{ label }} flex justify-between items-center py-2 px-3 bg-clip-padding border-b border-white rounded-t-md">
+                            <p class="font-bold text-white flex items-center">
+                                <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="info-circle" class="w-4 h-4 mr-2 fill-current" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                    <path fill="currentColor" d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z"></path>
+                                </svg>
+                                {{ label|upper }}</p>
+                            <div class="flex items-center">
+                                <p class="text-white opacity-90 text-xs">{{ "now"|date('G \\h i', "Europe/Paris") }}</p>
+                                <button id="btn-close-flash" type="button" class="btn-close btn-close-white box-content w-4 h-4 ml-2 text-white border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-white hover:opacity-75 hover:no-underline" data-mdb-dismiss="toast" aria-label="Close"></button>
+                            </div>
+                        </div>
+                        <div class="p-3 {{ label }} rounded-b-md break-words font-bold text-white text-center">
+                            {{ message }}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endfor %}
+
         {% block footer %}
             {{ render(controller(
                 'App\\Controller\\FooterController::index'
@@ -23,6 +51,11 @@
         {% endblock %}
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+
+        {% block messages %}
+
+
         {% endblock %}
     </body>
 </html>

@@ -7,15 +7,15 @@
 {# ---------- Section carte du restaurant ---------- #}
 <section class="w-full text-center">
     <h1 class="text-4xl mt-14">Quai Antique</h1>
-    <h2 class="text-2xl">Carte du restaurant</h2>
+    <h2 class="text-4xl underline mt-9">Carte du restaurant</h2>
     <div class="flex flex-row flex-wrap justify-around max-w-6xl mx-auto">
     {% for category in categories %}
-        <div class="text-center max-w-md m-8">
-        <h2 class="text-xl">{{ category.title }}</h2>
+        <div class="text-center max-w-md m-9">
+        <h2 class="text-4xl">{{ category.title }}</h2>
             {% for dish in dishes %}
                 {% if dish.category.title == category.title %}
                     <div class="max-w-lg mx-auto mt-4">
-                        <h3 class="text-xl"> {{ dish.title }} - <span class="text-lg">{{ (dish.price / 100) | format_number({fraction_digit : 2}) }}€</span></h3>
+                        <h3 class="text-3xl"> {{ dish.title }} - <span class="text-3xl">{{ (dish.price / 100) | format_number({fraction_digit : 2}) }}€</span></h3>
                         <p>
                             {{ dish.description }}
                         </p>
@@ -42,16 +42,16 @@
 </section>
 
     <div class="img-menu w-full h-24 bg-black my-24 flex justify-center items-center">
-        <p class="text-lg text-gold-brown">Si l'authenticité était une personne, elle serait notre chef étoilé.</p>
+        <p class="text-lg text-gold-brown text-center">Si l'authenticité était une personne, elle serait notre chef étoilé.</p>
     </div>
 
 {# ---------- Section Menu du restaurant ---------- #}
     <section class="w-full text-center">
-        <h2 class="text-2xl">Menus</h2>
+        <h2 class="text-4xl underline">Menus</h2>
         <div class="flex flex-row flex-wrap justify-around max-w-6xl mx-auto">
             {% for menu in menus %}
                 <div class="max-w-md mx-auto m-8">
-                    <h3 class="text-xl"> {{ menu.title }} - <span class="text-lg">{{ (menu.price / 100) | format_number({fraction_digit : 2}) }}€</span></h3>
+                    <h3 class="text-3xl"> {{ menu.title }} - <span class="text-3xl">{{ (menu.price / 100) | format_number({fraction_digit : 2}) }}€</span></h3>
                     <p>
                         {{ menu.description }}
                     </p>

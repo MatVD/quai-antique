@@ -15,8 +15,10 @@
     {# ----------  si ROLE_ADMIN ------------ #}
             {% if is_granted('ROLE_ADMIN') %}
             <div class="block p-6 m-8 rounded-lg shadow-lg bg-white text-center max-w-md mx-auto">
-                <h1><span class="italic">{{ app.user.userIdentifier }}</span></h1>
-                <h2>Vous êtes connecté en tant qu'administrateur</h2>
+                <h1>
+                    Vous êtes connecté en tant qu'administrateur <br>
+                    <span class="italic">{{ app.user.userIdentifier }}</span>
+                </h1>
                 <h3>Que souhaitez-vous faire ?</h3>
             </div>
 
@@ -66,8 +68,10 @@
             {% elseif is_granted('ROLE_USER') %}
             {# ----------  DECONNEXION ------------ #}
             <div class="block p-6 m-8 rounded-lg shadow-lg bg-white text-center max-w-md mx-auto">
-                <h1><span class="italic">{{ app.user.userIdentifier }}</span></h1>
-                <h2>Vous êtes déjà connecté</h2>
+                <h1>
+                    Vous êtes connecté en tant que : <br>
+                    <span class="italic">{{ app.user.userIdentifier }}</span>
+                </h1>
                 <h3>Que souhaitez-vous faire ?</h3>
             </div>
 

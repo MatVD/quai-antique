@@ -2,7 +2,8 @@
 
 namespace App\Controller;
 
-use App\Entity\Tables;
+use App\Entity\Schedules;
+use App\Repository\SchedulesRepository;
 use App\Repository\TablesRepository;
 use App\Repository\TablesType;
 use Doctrine\Persistence\ManagerRegistry;
@@ -17,27 +18,43 @@ class BookTableController extends AbstractController
     #[Route('/reservation', name: 'app_book_table', methods: ['GET', 'POST'])]
     public function index(TablesRepository $tablesRepository, ManagerRegistry $doctrine, Request $request): Response
     {
-
         // Récupération en bbd de la 1ère table libre
         $table = $tablesRepository->findOneBy(['free' => 1]);
 
+        // Création du form sur la base de la 1ère table de libre en bdd
+        $form = $this->createForm(TablesType::class, $table);
+        $form->handleRequest($request);
+
+        // Message si pas de table libre
         if (!$table) {
-            throw $this->createNotFoundException(
+            $this->addFlash('warning',
                 'Il n\'y a plus de table de libre. Veuillez s\'il vous plait réessayer d\'ici quelques minutes'
             );
         }
 
-        // Création du form sur la base de cette table libre
-        $form = $this->createForm(TablesType::class, $table);
-        $form->handleRequest($request);
+        // Si réservation 1h avant la fin du service
+        if ((date('H:i:s') >= "12:00:00" && date('H:i:s') <= "15:00:00")
+            || (date('H:i:s') >= "21:00:00" && date('H:i:s') <= "22:59:59")) {
 
-        // Récupération des données du form pour les inclure en bbd
-        if ($form->isSubmitted() && $form->isValid() ) {
-            $table = $form->getData();
-            $doctrine->getManager()->persist($table);
-            $doctrine->getManager()->flush();
+            // Non acceptation des réservations 1h avant fin du service
+            $this->addFlash('warning',
+                'Nous sommes désolé ! Nous n\'acceptons plus de réservation après 13h00 le midi et après 22h00 le soir'
+            );
+        } else {
 
-            // TO DO: return $this->redirectToRoute('success')
+            // Récupération des données du form pour les inclure en bbd
+            if ($form->isSubmitted() && $form->isValid() ) {
+                $table->setFree(false);
+                $table = $form->getData();
+                $doctrine->getManager()->persist($table);
+                $doctrine->getManager()->flush();
+
+                $this->addFlash('notice',
+                    'Votre réservation à bien été prise en compte'
+                );
+
+                return $this->redirectToRoute('app_book_table');
+            }
         }
 
         return $this->render('book_table/index.html.twig', [
@@ -59,4 +76,6 @@ class BookTableController extends AbstractController
 
         return $this->json(["TablesFree" => $nbTableFree]);
     }
+
+
 }

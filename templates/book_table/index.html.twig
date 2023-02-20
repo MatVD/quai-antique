@@ -9,8 +9,6 @@
         <p id="nbTablesFreeP">
     </div>
 
-{{ dump(table) }}
-
 
 
 {# ---------- formulaire de réservation de table ------------- #}
@@ -92,19 +90,11 @@
             </div>
 
             {# ---------- Eventuel message d'erreur ------------- #}
-            <div class="form-error">
-                {{ form_errors(form) }}
-            </div>
 
         {{ form_end(form) }}
     </div>
 
-    <div class="text-center mt-4">
-        <p>
-            Les heures d'arrivées se feront entre 11h30 et 13h00 pour le midi <br>
-            et 18h30 et 22h le soir.
-        </p>
-    </div>
+
 {% endblock %}
 
 {% block javascripts %}

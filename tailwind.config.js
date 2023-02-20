@@ -10,7 +10,7 @@ module.exports = {
             'brown-gold': '#c36f09',
             'gold-brown' : '#AA8239',
             'gold-ligth': '#EFE6AA',
-            'blue-lagoon': '#3B6FB1'
+            'blue-lagoon': '#3B6FB1',
         },
     },
   },
