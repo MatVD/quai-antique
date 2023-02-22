@@ -9,6 +9,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\MoneyField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 
 
@@ -39,11 +40,7 @@ class MenuCrudController extends AbstractCrudController
                 ->hideOnIndex(),
             TextField::new('title', 'Titre'),
             TextareaField::new('description', 'Description'),
-            MoneyField::new('price', 'Prix')->setCurrency('EUR'),
-            AssociationField::new('admin', 'Admin')
-                ->setValue($this->getUser())
-                ->hideOnForm()
-
+            NumberField::new('price', 'Prix')->setNumDecimals('2'),
         ];
     }
 

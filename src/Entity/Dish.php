@@ -23,12 +23,8 @@ class Dish
     #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2)]
     private ?string $price = null;
 
-    #[ORM\ManyToOne(inversedBy: 'dishes')]
+    #[ORM\ManyToOne(targetEntity: Categories::class, inversedBy: 'dishes')]
     private ?Categories $category = null;
-
-    #[ORM\ManyToOne(inversedBy: 'dishes')]
-    #[ORM\JoinColumn(nullable: true)]
-    private ?User $user = null;
 
     public function getId(): ?int
     {
@@ -83,16 +79,9 @@ class Dish
         return $this;
     }
 
-    public function getUser(): ?User
+
+    public function __toString(): string
     {
-        return $this->user;
+        return $this->title;
     }
-
-    public function setUser(?User $user): self
-    {
-        $this->user = $user;
-
-        return $this;
-    }
-
 }

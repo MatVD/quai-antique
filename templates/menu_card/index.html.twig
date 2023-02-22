@@ -15,7 +15,7 @@
             {% for dish in dishes %}
                 {% if dish.category.title == category.title %}
                     <div class="max-w-lg mx-auto mt-4">
-                        <h3 class="text-3xl"> {{ dish.title }} - <span class="text-3xl">{{ (dish.price / 100) | format_number({fraction_digit : 2}) }}€</span></h3>
+                        <h3 class="text-3xl"> {{ dish.title }} - <span class="text-3xl">{{ dish.price | format_number({fraction_digit : 2}) }}€</span></h3>
                         <p>
                             {{ dish.description }}
                         </p>
@@ -51,7 +51,7 @@
         <div class="flex flex-row flex-wrap justify-around max-w-6xl mx-auto">
             {% for menu in menus %}
                 <div class="max-w-md mx-auto m-8">
-                    <h3 class="text-3xl"> {{ menu.title }} - <span class="text-3xl">{{ (menu.price / 100) | format_number({fraction_digit : 2}) }}€</span></h3>
+                    <h3 class="text-3xl"> {{ menu.title }} - <span class="text-3xl">{{ menu.price | format_number({fraction_digit : 2}) }}€</span></h3>
                     <p>
                         {{ menu.description }}
                     </p>

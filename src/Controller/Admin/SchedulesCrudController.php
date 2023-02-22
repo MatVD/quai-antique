@@ -37,7 +37,6 @@ class SchedulesCrudController extends AbstractCrudController
             TimeField::new('AMclosingHours', 'Horaires de fermeture - Midi'),
             TimeField::new('PMopeningHours', 'Horaires d\'ouverture - Soir'),
             TimeField::new('PMclosingHours', 'Horaires de fermeture - Soir')
-
         ];
     }
 

@@ -17,21 +17,17 @@ class Schedules
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $days = null;
 
-    #[ORM\Column(type: Types::TIME_MUTABLE, nullable: true)]
-    private ?\DateTimeInterface $AMopeningHours = null;
+    #[ORM\Column(type: Types::TIME_IMMUTABLE, nullable: true)]
+    private ?\DateTimeImmutable $AMopeningHours = null;
 
-    #[ORM\Column(type: Types::TIME_MUTABLE, nullable: true)]
-    private ?\DateTimeInterface $AMclosingHours = null;
+    #[ORM\Column(type: Types::TIME_IMMUTABLE, nullable: true)]
+    private ?\DateTimeImmutable $AMclosingHours = null;
 
-    #[ORM\Column(type: Types::TIME_MUTABLE, nullable: true)]
-    private ?\DateTimeInterface $PMopeningHours = null;
+    #[ORM\Column(type: Types::TIME_IMMUTABLE, nullable: true)]
+    private ?\DateTimeImmutable $PMopeningHours = null;
 
-    #[ORM\Column(type: Types::TIME_MUTABLE, nullable: true)]
-    private ?\DateTimeInterface $PMclosingHours = null;
-
-    #[ORM\ManyToOne(inversedBy: 'schedules')]
-    #[ORM\JoinColumn(nullable: true)]
-    private ?User $admin = null;
+    #[ORM\Column(type: Types::TIME_IMMUTABLE, nullable: true)]
+    private ?\DateTimeImmutable $PMclosingHours = null;
 
     public function getId(): ?int
     {
@@ -87,17 +83,5 @@ class Schedules
     public function setDays(?string $days): void
     {
         $this->days = $days;
-    }
-
-    public function getAdmin(): ?User
-    {
-        return $this->admin;
-    }
-
-    public function setAdmin(?User $admin): self
-    {
-        $this->admin = $admin;
-
-        return $this;
     }
 }

@@ -29,7 +29,7 @@ class TablesCrudController extends AbstractCrudController
     {
         return [
             IdField::new('id', 'Table n°')->setDisabled(true),
-            TextField::new('user', 'Réservation au nom de :')->setRequired(false),
+            TextField::new('reservation_name', 'Réservation au nom de :')->setRequired(false),
             NumberField::new('seats', 'Nombre de personnes')->setRequired(false),
             Field::new('allergies', 'Allergies')->setRequired(false),
             BooleanField::new('free', 'Table libre ?')->setRequired(false),
@@ -59,7 +59,7 @@ class TablesCrudController extends AbstractCrudController
         $tables = $tablesRepository->findAll();
 
         foreach ($tables as $table) {
-            $table->setUser(null);
+            $table->setReservationname(null);
             $table->setSeats(0);
             $table->setAllergies("");
             $table->setDate(null);

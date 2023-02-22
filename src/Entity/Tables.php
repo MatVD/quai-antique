@@ -3,7 +3,6 @@
 namespace App\Entity;
 
 use App\Repository\TablesRepository;
-use Doctrine\DBAL\Types\DateType;
 use Doctrine\DBAL\Types\Types;
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
@@ -21,17 +20,17 @@ class Tables
     #[Assert\PositiveOrZero]
     private ?int $seats = 0;
 
-    #[ORM\Column(nullable: true)]
-    private ?bool $free = null;
+    #[ORM\Column(nullable: false)]
+    private bool $free;
 
     #[ORM\Column(nullable: true)]
-    private ?string $user = null;
+    private ?string $reservation_name = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
-    private ?\DateTimeInterface $date;
+    private ?\DateTime $date;
 
     #[ORM\Column(type: Types::TIME_MUTABLE, nullable: true)]
-    private ?\DateTimeInterface $arrival_time;
+    private ?\DateTime $arrival_time;
 
     #[ORM\Column(nullable: true)]
     private array|string|null $allergies;
@@ -40,6 +39,23 @@ class Tables
     {
         return $this->id;
     }
+
+    /**
+     * @return string|null
+     */
+    public function getReservationName(): ?string
+    {
+        return $this->reservation_name;
+    }
+
+    /**
+     * @param string|null $reservation_name
+     */
+    public function setReservationName(?string $reservation_name): void
+    {
+        $this->reservation_name = $reservation_name;
+    }
+
 
     public function getSeats(): ?int
     {
@@ -53,7 +69,7 @@ class Tables
         return $this;
     }
 
-    public function isFree(): ?bool
+    public function isFree(): bool
     {
         return $this->free;
     }
@@ -65,36 +81,24 @@ class Tables
         return $this;
     }
 
-    public function getUser(): ?string
-    {
-        return $this->user;
-    }
-
-    public function setUser(?string $user): self
-    {
-        $this->user = $user;
-
-        return $this;
-    }
-
-    public function getDate(): ?\DateTimeInterface
+    public function getDate(): ?\DateTime
     {
         return $this->date;
     }
 
-    public function setDate(?\DateTimeInterface $date): self
+    public function setDate(?\DateTime $date): self
     {
         $this->date = $date;
 
         return $this;
     }
 
-    public function getArrivalTime(): ?\DateTimeInterface
+    public function getArrivalTime(): ?\DateTime
     {
         return $this->arrival_time;
     }
 
-    public function setArrivalTime(?\DateTimeInterface $arrival_time): self
+    public function setArrivalTime(?\DateTime $arrival_time): self
     {
         $this->arrival_time = $arrival_time;
 
