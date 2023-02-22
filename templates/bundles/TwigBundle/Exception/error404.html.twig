@@ -1,0 +1,18 @@
+{# templates/bundles/TwigBundle/Exception/error404.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <section class="w-full h-full flex justify-center">
+        <div class="text-center my-10 md:translate-y-1/2 md:mt-32 md:mb-48">
+            <h1 class="text-3xl mb-10">Page non trouvée</h1>
+
+            <p>
+                La page demandée n'a pas pu être retournée. Elle n'existe peut-être pas ! <br>
+                Rejoindre la page d'accueil ici : <a class="underline text-blue-lagoon" href="{{ path('app_home') }}">Accueil</a>.
+            </p>
+
+        </div>
+
+
+    </section>
+{% endblock %}
