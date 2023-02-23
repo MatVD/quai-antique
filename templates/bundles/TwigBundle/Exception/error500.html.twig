@@ -1,0 +1,18 @@
+{# templates/bundles/TwigBundle/Exception/error500.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <section class="w-full h-full flex justify-center">
+        <div class="text-center my-10 md:translate-y-1/2 md:mt-32 md:mb-48">
+            <h1 class="text-3xl mb-10">Problème serveur</h1>
+
+            <p>
+                Nous faisons tout pour régler ce problème. Vous n'y êtes pour rien, cela vient de nous ! <br>
+                Rejoindre la page d'accueil ici : <a class="underline text-blue-lagoon" href="{{ path('app_home') }}">Accueil</a>.
+            </p>
+
+        </div>
+
+
+    </section>
+{% endblock %}
