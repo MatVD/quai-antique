@@ -23,13 +23,8 @@
 6 - Lancer le serveur local (_nécessite Symfony CLI_ => https://nodejs.org/en/download/): 
 - symfony server:start ou symfony serve -d
 
-7 - Si vous faites un tour sur le site, vous noterez qu'il fonctionne mais qu'il manque certains éléments (images sur la page d'accueil, menus et plats dans l'onglet Carte/Menus ..etc).  
-- Il est nécessaire de lancer les fictures avec la commande : php bin/console doctrine:fixtures:load
-
-8 - Accès à la partie administration du site
-- S'inscrire via le formulaire d'insciption du site puis dans un terminal taper la commande :
-  - php bin/console doctrine:query:sql "UPDATE user SET roles = '[\"ROLE_ADMIN\"]' where email = _<entrer email de l'inscription>_";
-
+7 - Si vous faites un tour sur le site, vous noterez qu'il fonctionne mais qu'il manque certains éléments (images sur la page d'accueil, menus et plats dans l'onglet Carte/Menus ..etc). Il est nécessaire de lancer les fixtures avec la commande suivante:
+- php bin/console doctrine:fixtures:load
 
   
 ## Déployement en ligne
