@@ -14,7 +14,7 @@
         <h2 class="text-4xl">{{ category.title }}</h2>
             {% for dish in dishes %}
                 {% if dish.category.title == category.title %}
-                    <div class="max-w-lg mx-auto mt-4">
+                    <div class="max-w-md mx-auto mt-4">
                         <h3 class="text-3xl"> {{ dish.title }} - <span class="text-3xl">{{ dish.price | format_number({fraction_digit : 2}) }}€</span></h3>
                         <p>
                             {{ dish.description }}

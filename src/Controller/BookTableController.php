@@ -38,7 +38,7 @@ class BookTableController extends AbstractController
 
             // Non acceptation des réservations 1h avant fin du service
             $this->addFlash('warning',
-                'Nous sommes désolé ! Nous n\'acceptons plus de réservation après 13h00 le midi et après 22h00 le soir'
+                'Nous sommes désolés ! Nous n\'acceptons plus de réservation après 13h00 le midi et après 22h00 le soir'
             );
         } else {
 
@@ -50,7 +50,7 @@ class BookTableController extends AbstractController
                 $doctrine->getManager()->flush();
 
                 $this->addFlash('notice',
-                    'Votre réservation à bien été prise en compte'
+                    'Votre réservation a bien été prise en compte'
                 );
 
                 return $this->redirectToRoute('app_book_table');
