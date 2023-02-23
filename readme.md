@@ -14,9 +14,8 @@
 - npm install (_avant tout node.js doit être installé_ => https://nodejs.org/en/download/)
 
 4 - Etapes de création et alimentation de la base de données (_avec Doctrine_). Via le terminal:
-- php bin/console doctrine:database:create
-- php bin/console make:migration
-- php bin/console doctrine:migrations:migrate
+- php bin/console d:d:c (doctrine:database:create)
+- php bin/console d:m:m (doctrine:migrations:migrate)
 
 5 - Pour générer les dossiers et fichiers de build, lancer la commande:
 - npm run build
