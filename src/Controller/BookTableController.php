@@ -16,7 +16,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class BookTableController extends AbstractController
 {
     #[Route('/reservation', name: 'app_book_table', methods: ['GET', 'POST'])]
-    public function index(TablesRepository $tablesRepository, ManagerRegistry $doctrine, Request $request): Response
+    public function bookTable(TablesRepository $tablesRepository, ManagerRegistry $doctrine, Request $request): Response
     {
         // Récupération en bbd de la 1ère table libre
         $table = $tablesRepository->findOneBy(['free' => 1]);
