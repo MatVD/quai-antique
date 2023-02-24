@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class MenuCardController extends AbstractController
 {
-    #[Route('/carte', name: 'app_menu_card')]
+    #[Route('/carte', name: 'app_menu_card', methods: ['GET'])]
     public function index(MenuRepository $menuRepository, DishRepository $dishRepository, CategoriesRepository $categoriesRepository): Response
     {
 
