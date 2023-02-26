@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Tables;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use function Sodium\add;
 
 /**
  * @extends ServiceEntityRepository<Tables>
@@ -44,14 +45,18 @@ class TablesRepository extends ServiceEntityRepository
      */
     public function findAllTableFree($value): array
     {
-        return $this->createQueryBuilder('t')
-            ->andWhere('t.free = :val')
-            ->setParameter('val', $value)
-            ->orderBy('t.id', 'ASC')
-            ->setMaxResults(20)
-            ->getQuery()
-            ->getResult()
-        ;
+        // Requête préparée. Elle ne fonctionnera que si la valeur est 1 (true dans la bdd).
+        if ($value == 1) {
+            return $this->createQueryBuilder('t')
+                ->andWhere('t.free = :val')
+                ->setParameter('val', $value)
+                ->orderBy('t.id', 'ASC')
+                ->setMaxResults(30)
+                ->getQuery()
+                ->getResult()
+                ;
+        }
+        return [];
     }
 
 //    public function findOneTableFree($value): ?Tables

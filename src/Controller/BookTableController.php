@@ -67,7 +67,7 @@ class BookTableController extends AbstractController
 
     // API permettant la récupération en asynchrone du nombre de table libre
     // le fichier fetchNbFreeTables.js fait un fetch sur cette route
-    #[Route('/freeTableCount')]
+    #[Route('/freeTableCount', methods: ['GET'])]
     public function getFreeTableId(TablesRepository $tablesRepository): JsonResponse
     {
         // Récupération async du nombre de tables et de couvrets de libres
