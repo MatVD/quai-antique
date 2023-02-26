@@ -12,26 +12,26 @@ class Dish
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    private ?int $id = null;
+    private int $id;
 
     #[ORM\Column(length: 255)]
-    private ?string $title = null;
+    private string $title;
 
     #[ORM\Column(type: Types::TEXT)]
-    private ?string $description = null;
+    private string $description;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2)]
-    private ?string $price = null;
+    private string $price;
 
     #[ORM\ManyToOne(targetEntity: Categories::class, inversedBy: 'dishes')]
-    private ?Categories $category = null;
+    private Categories $category;
 
-    public function getId(): ?int
+    public function getId(): int
     {
         return $this->id;
     }
 
-    public function getTitle(): ?string
+    public function getTitle(): string
     {
         return $this->title;
     }
@@ -43,7 +43,7 @@ class Dish
         return $this;
     }
 
-    public function getDescription(): ?string
+    public function getDescription(): string
     {
         return $this->description;
     }
@@ -55,7 +55,7 @@ class Dish
         return $this;
     }
 
-    public function getPrice(): ?string
+    public function getPrice(): string
     {
         return $this->price;
     }
@@ -67,12 +67,12 @@ class Dish
         return $this;
     }
 
-    public function getCategory(): ?Categories
+    public function getCategory(): Categories
     {
         return $this->category;
     }
 
-    public function setCategory(?Categories $category): self
+    public function setCategory(Categories $category): self
     {
         $this->category = $category;
 
