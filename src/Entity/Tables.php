@@ -23,8 +23,8 @@ class Tables
     #[ORM\Column(nullable: false)]
     private bool $free;
 
-    #[ORM\Column(nullable: false)]
-    private string $reservation_name;
+    #[ORM\Column(nullable: true)]
+    private ?string $reservation_name;
 
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
     private ?\DateTime $date;
