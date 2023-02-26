@@ -15,6 +15,20 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class BookTableController extends AbstractController
 {
+
+    // API permettant la récupération en asynchrone du nombre de table libre
+    // le fichier fetchNbFreeTables.js fait un fetch sur cette route
+    #[Route('/freeTableCount', methods: ['GET'])]
+    public function getFreeTablesCount(TablesRepository $tablesRepository): JsonResponse
+    {
+        // Récupération async du nombre de tables et de couvrets de libres
+        $tablesFree = $tablesRepository->findAllTablesFree(1);
+        $nbTableFree = count($tablesFree);
+
+        return $this->json(["TablesFree" => $nbTableFree]);
+    }
+
+
     #[Route('/reservation', name: 'app_book_table', methods: ['GET', 'POST'])]
     public function bookTable(TablesRepository $tablesRepository, ManagerRegistry $doctrine, Request $request): Response
     {
@@ -62,19 +76,6 @@ class BookTableController extends AbstractController
             'form' => $form->createView()
         ]);
 
-    }
-
-
-    // API permettant la récupération en asynchrone du nombre de table libre
-    // le fichier fetchNbFreeTables.js fait un fetch sur cette route
-    #[Route('/freeTableCount', methods: ['GET'])]
-    public function getFreeTableId(TablesRepository $tablesRepository): JsonResponse
-    {
-        // Récupération async du nombre de tables et de couvrets de libres
-        $tablesFree = $tablesRepository->findAllTableFree(1);
-        $nbTableFree = count($tablesFree);
-
-        return $this->json(["TablesFree" => $nbTableFree]);
     }
 
 
