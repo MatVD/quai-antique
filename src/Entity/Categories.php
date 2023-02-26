@@ -15,7 +15,7 @@ class Categories
     #[ORM\Column]
     private int $id;
 
-    #[ORM\Column(length: 100)]
+    #[ORM\Column(length: 100, nullable: false)]
     private string $title;
 
     #[ORM\OneToMany(mappedBy: 'category', targetEntity: Dish::class)]

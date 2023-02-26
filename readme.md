@@ -4,13 +4,14 @@
 - Composer (_il est possible de le télécharger ici_ : https://getcomposer.org/download/)
 - Node.js et npm ou yarn (=> https://nodejs.org/en/download/)
 - Symfony CLI (=> https://nodejs.org/en/download/)
+- Un outil du type XAMPP, MAMPP ou LAMP pour un server local et une base de données.
 
 ## Instructions de déployement en local  
 
 1 - Git Clone https://github.com/MatVD/quai-antique.git. Utiliser un IDE pour ouvrir l'application web.
 
-2 - Créer un fichier .env.local
-- Y intégrer les variables d'environment contenu dans l'annexe A (_les variables APP_SECRET et DATABASE_URL sont nécessaires avant toutes les étapes ci-dessous_)
+2 - Dans le fichier .env (ou créer un fichier .env.local)
+- Y intégrer la variables d'environnement DATABASE_URL. Ce sera votre configuration locale. Il vous faudra un outil du type MAMPP, XAMPP ou LAMP. 
 
 3 - Via un terminal lancer les commandes suivantes:
 - Composer install
