@@ -14,7 +14,7 @@ class Tables
     #[ORM\GeneratedValue]
     #[ORM\Column]
     #[Assert\NotBlank]
-    private ?int $id = null;
+    private int $id;
 
     #[ORM\Column(nullable: true)]
     #[Assert\PositiveOrZero]
@@ -23,8 +23,8 @@ class Tables
     #[ORM\Column(nullable: false)]
     private bool $free;
 
-    #[ORM\Column(nullable: true)]
-    private ?string $reservation_name = null;
+    #[ORM\Column(nullable: false)]
+    private string $reservation_name;
 
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
     private ?\DateTime $date;
@@ -35,22 +35,16 @@ class Tables
     #[ORM\Column(nullable: true)]
     private array|string|null $allergies;
 
-    public function getId(): ?int
+    public function getId(): int
     {
         return $this->id;
     }
 
-    /**
-     * @return string|null
-     */
     public function getReservationName(): ?string
     {
         return $this->reservation_name;
     }
 
-    /**
-     * @param string|null $reservation_name
-     */
     public function setReservationName(?string $reservation_name): void
     {
         $this->reservation_name = $reservation_name;
