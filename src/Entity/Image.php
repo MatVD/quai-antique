@@ -19,8 +19,8 @@ class Image
     #[ORM\Column(length: 255, nullable: false)]
     private string $title;
 
-    #[ORM\Column(length: 255, nullable: false)]
-    private string $file;
+    #[ORM\Column(length: 255)]
+    private ?string $file = null;
 
     #[Vich\UploadableField(mapping:"galerie_images", fileNameProperty:"file")]
     private File $imageFile;
