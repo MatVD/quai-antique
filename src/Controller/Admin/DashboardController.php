@@ -42,5 +42,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Horaires', 'fa-solid fa-calendar-days', Schedules::class);
         yield MenuItem::linkToCrud('Images', 'fa-regular fa-image', Image::class);
         yield MenuItem::linkToCrud('Tables','fa-solid fa-utensils',Tables::class);
+        yield MenuItem::section('--------');
+        yield MenuItem::linkToRoute('Accueil du site', 'fa-solid fa-eye', 'app_home');
     }
 }

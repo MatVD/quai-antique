@@ -17,6 +17,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TimeField;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
 
 class TablesCrudController extends AbstractCrudController
 {
@@ -25,6 +26,7 @@ class TablesCrudController extends AbstractCrudController
         return Tables::class;
     }
 
+    
     public function configureFields(string $pageName): iterable
     {
         return [
@@ -40,7 +42,7 @@ class TablesCrudController extends AbstractCrudController
 
     public function configureActions(Actions $actions): Actions
     {
-        $resetTablesAction = Action::new('reset', 'Reset tables')
+        $resetTablesAction = Action::new('reset', 'Vider les tables')
             ->displayAsLink()
             ->setCssClass('btn btn-warning')
             ->linkToCrudAction('resetAllTablesOnfree')
@@ -55,7 +57,7 @@ class TablesCrudController extends AbstractCrudController
     // Fonction reset des tables pour les remmettre à zéro après le service
     public function resetAllTablesOnfree(TablesRepository $tablesRepository, ManagerRegistry $doctrine): Response
     {
-        // Récupération async du nombre de tables et de couvrets de libres
+        // Récupération des tables
         $tables = $tablesRepository->findAll();
 
         foreach ($tables as $table) {
