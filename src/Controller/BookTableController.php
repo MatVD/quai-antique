@@ -17,7 +17,7 @@ class BookTableController extends AbstractController
 {
 
     // API permettant la récupération en asynchrone du nombre de table libre
-    // le fichier fetchNbFreeTables.js fait un fetch sur cette route
+    // le fichier fetchNbFreeTables.js fait un fetch sur cette route toute les 5 minutes
     #[Route('/freeTableCount', methods: ['GET'])]
     public function getFreeTablesCount(TablesRepository $tablesRepository): JsonResponse
     {
@@ -44,30 +44,31 @@ class BookTableController extends AbstractController
             $this->addFlash('warning',
                 'Il n\'y a plus de table de libre. Veuillez s\'il vous plait réessayer d\'ici quelques minutes'
             );
-        }
-
-        // Si réservation 1h avant la fin du service
-        if ((date('H:i:s') >= "12:00:00" && date('H:i:s') <= "15:00:00")
-            || (date('H:i:s') >= "21:00:00" && date('H:i:s') <= "22:59:59")) {
-
-            // Non acceptation des réservations 1h avant fin du service
-            $this->addFlash('warning',
-                'Nous sommes désolés ! Nous n\'acceptons plus de réservation après 13h00 le midi et après 22h00 le soir'
-            );
         } else {
 
-            // Récupération des données du form pour les inclure en bbd
-            if ($form->isSubmitted() && $form->isValid() ) {
-                $table->setFree(false);
-                $table = $form->getData();
-                $doctrine->getManager()->persist($table);
-                $doctrine->getManager()->flush();
+            // Si réservation 1h avant la fin du service
+            if ((date('H:i:s') >= "12:00:00" && date('H:i:s') <= "15:00:00")
+                || (date('H:i:s') >= "21:00:00" && date('H:i:s') <= "22:59:59")) {
 
-                $this->addFlash('notice',
-                    'Votre réservation a bien été prise en compte'
+                // Non acceptation des réservations 1h avant fin du service
+                $this->addFlash('warning',
+                    'Nous sommes désolés ! Nous n\'acceptons plus de réservation après 13h00 le midi et après 22h00 le soir'
                 );
+            } else {
 
-                return $this->redirectToRoute('app_book_table');
+                // Récupération des données du form pour les inclure en bbd
+                if ($form->isSubmitted() && $form->isValid() ) {
+                    $table->setFree(false);
+                    $table = $form->getData();
+                    $doctrine->getManager()->persist($table);
+                    $doctrine->getManager()->flush();
+
+                    $this->addFlash('notice',
+                        'Votre réservation a bien été prise en compte'
+                    );
+
+                    return $this->redirectToRoute('app_book_table');
+                }
             }
         }
 
