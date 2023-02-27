@@ -7,7 +7,7 @@
     <section class="w-full h-full">
         <form class="mx-auto" method="post">
             {% if error %}
-                <p class="alert alert-danger absolute my-14">
+                <p class="text-center my-14">
                     {{ error.messageKey|trans(error.messageData, 'security') }}
                 </p>
             {% endif %}
