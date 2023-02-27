@@ -13,10 +13,10 @@ class Categories
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    private ?int $id = null;
+    private int $id;
 
-    #[ORM\Column(length: 100)]
-    private ?string $title = null;
+    #[ORM\Column(length: 100, nullable: false)]
+    private string $title;
 
     #[ORM\OneToMany(mappedBy: 'category', targetEntity: Dish::class)]
     private Collection $dishes;
@@ -26,12 +26,12 @@ class Categories
         $this->dishes = new ArrayCollection();
     }
 
-    public function getId(): ?int
+    public function getId(): int
     {
         return $this->id;
     }
 
-    public function getTitle(): ?string
+    public function getTitle(): string
     {
         return $this->title;
     }
@@ -43,34 +43,9 @@ class Categories
         return $this;
     }
 
-    /**
-     * @return Collection<int, Dish>
-     */
     public function getDishes(): Collection
     {
         return $this->dishes;
-    }
-
-    public function addDish(Dish $dish): self
-    {
-        if (!$this->dishes->contains($dish)) {
-            $this->dishes->add($dish);
-            $dish->setCategory($this);
-        }
-
-        return $this;
-    }
-
-    public function removeDish(Dish $dish): self
-    {
-        if ($this->dishes->removeElement($dish)) {
-            // set the owning side to null (unless already changed)
-            if ($dish->getCategory() === $this) {
-                $dish->setCategory(null);
-            }
-        }
-
-        return $this;
     }
 
     public function __toString(): string

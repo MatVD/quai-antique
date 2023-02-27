@@ -12,10 +12,10 @@ class Schedules
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    private ?int $id = null;
+    private int $id;
 
-    #[ORM\Column(type: Types::TEXT, nullable: true)]
-    private ?string $days = null;
+    #[ORM\Column(type: Types::TEXT, nullable: false)]
+    private string $days;
 
     #[ORM\Column(type: Types::TIME_IMMUTABLE, nullable: true)]
     private ?\DateTimeImmutable $AMopeningHours = null;
@@ -29,7 +29,7 @@ class Schedules
     #[ORM\Column(type: Types::TIME_IMMUTABLE, nullable: true)]
     private ?\DateTimeImmutable $PMclosingHours = null;
 
-    public function getId(): ?int
+    public function getId(): int
     {
         return $this->id;
     }
@@ -75,12 +75,12 @@ class Schedules
         $this->PMclosingHours = $PMclosingHours;
     }
 
-    public function getDays(): ?string
+    public function getDays(): string
     {
         return $this->days;
     }
 
-    public function setDays(?string $days): void
+    public function setDays(string $days): void
     {
         $this->days = $days;
     }

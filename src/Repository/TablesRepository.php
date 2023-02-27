@@ -43,7 +43,7 @@ class TablesRepository extends ServiceEntityRepository
     /**
      * @return Tables[] Returns an array of Tables objects
      */
-    public function findAllTableFree($value): array
+    public function findAllTablesFree($value): array
     {
         // Requête préparée. Elle ne fonctionnera que si la valeur est 1 (true dans la bdd).
         if ($value == 1) {

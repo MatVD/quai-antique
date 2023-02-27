@@ -14,19 +14,17 @@ class Image
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    private ?int $id = null;
+    private int $id;
 
-    #[ORM\Column(length: 255)]
-    private ?string $title = null;
+    #[ORM\Column(length: 255, nullable: false)]
+    private string $title;
 
-    #[ORM\Column(length: 255)]
-    private ?string $file = null;
+    #[ORM\Column(length: 255, nullable: false)]
+    private string $file;
 
     #[Vich\UploadableField(mapping:"galerie_images", fileNameProperty:"file")]
-    private ?File $imageFile;
+    private File $imageFile;
 
-    #[ORM\Column()]
-    private \DateTime $updatedAt;
 
     public function getId(): ?int
     {
@@ -38,27 +36,23 @@ class Image
         return $this->file;
     }
 
-    public function setFile(?string $file): void
+    public function setFile(string $file): void
     {
         $this->file = $file;
     }
 
-    public function getImageFile(): ?File
+    public function getImageFile(): File
     {
         return $this->imageFile;
     }
 
-    public function setImageFile(?File $imageFile = null): void
+    public function setImageFile(File $imageFile = null): void
     {
         $this->imageFile = $imageFile;
 
-        if ($imageFile) {
-            // if 'updatedAt' is not defined in your entity, use another property
-            $this->updatedAt = new \DateTime('now');
-        }
     }
 
-    public function getTitle(): ?string
+    public function getTitle(): string
     {
         return $this->title;
     }
@@ -70,13 +64,4 @@ class Image
         return $this;
     }
 
-    public function getUpdatedAt(): \DateTime
-    {
-        return $this->updatedAt;
-    }
-
-    public function setUpdatedAt(\DateTime $updatedAt): void
-    {
-        $this->updatedAt = $updatedAt;
-    }
 }
