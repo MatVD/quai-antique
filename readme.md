@@ -4,7 +4,7 @@
 - Composer (_il est possible de le télécharger ici_ : https://getcomposer.org/download/)
 - Node.js et npm ou yarn (=> https://nodejs.org/en/download/)
 - Symfony CLI (=> https://nodejs.org/en/download/)
-- Un outil du type XAMPP, WAMP ou LAMP pour un server local et une base de données.
+- Et peut-être un outil du type XAMPP, WAMP ou LAMP pour un server local et une base de données.
 
 ## Instructions de déployement en local  
 
@@ -29,7 +29,6 @@
 
 7 - A ce stade, si vous faites un tour sur le site, vous noterez qu'il fonctionne mais qu'il manque certains éléments (images sur la page d'accueil, menus et plats dans l'onglet Carte/Menus ..etc). Il est nécessaire de lancer les fixtures avec la commande suivante:
 - php bin/console doctrine:fixtures:load
-- pour les images en pages d'accueil, depuis l'espace d'administration (voir étape ci-dessous), aller dans l'onglet "images" et télécharger quelques images
 
 8 - Et le tour est joué... 
 

@@ -23,7 +23,7 @@ class Images
     private ?string $file = null;
 
     #[Vich\UploadableField(mapping:"galerie_images", fileNameProperty:"file")]
-    private ?File $imageFile;
+    private ?File $imageFile = null;
 
     #[ORM\ManyToOne(inversedBy: 'images')]
     #[ORM\JoinColumn(nullable: false)]
@@ -45,12 +45,12 @@ class Images
         $this->file = $file;
     }
 
-    public function getImageFile(): File
+    public function getImageFile(): ?File
     {
         return $this->imageFile;
     }
 
-    public function setImageFile(File $imageFile = null): void
+    public function setImageFile(?File $imageFile = null): void
     {
         $this->imageFile = $imageFile;
 
