@@ -29,13 +29,17 @@
 - symfony server:start ou symfony serve -d
 
 7 - A ce stade, si vous faites un tour sur le site, vous noterez qu'il fonctionne mais qu'il manque certains éléments (images sur la page d'accueil, menus et plats dans l'onglet Carte/Menus ..etc). Il est nécessaire de lancer les fixtures avec la commande suivante:
-- php bin/console doctrine:fixtures:load
+- php bin/console doctrine:fixtures:load 
+- Taper "Yes" à la question générée par la commande.
 
 8 - Et le tour est joué... 
 
-9 - Pour la création d'un administrateur vous pouvez suivre les étapes suivantes :
-- Créer un compte sur le site => http://127.0.0.1:8000/creation_compte
-- Puis, dans le terminal taper la commande suivante : php bin/console doctrine:query:sql "UPDATE User SET roles = '[\\"ROLE_ADMIN\\"]' WHERE email = '_email que vous avez renseigner à la création_'";
+9 - Un administrateur est créé par défault via les fixtures :
+- Id : capitaine-admin@gmail.com,
+- Mot de passe : cap_ad/1264ADMIN,
+  - Mais si vous souhaitez en créer un nouveau voici la démarche:
+  - Créer votre compte sur la page de création de compte => http://127.0.0.1:8000/creation_compte
+  - Puis, dans le terminal taper la commande suivante : php bin/console doctrine:query:sql "UPDATE User SET roles = '[\\"ROLE_ADMIN\\"]' WHERE email = '_votre email_'";
 
 
 ## Déployement en ligne
