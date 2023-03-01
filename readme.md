@@ -1,6 +1,6 @@
 # Quai antique - Restaurant
 
-#### Pour le bon suivi des instructions, vous devrez avoitr téléchargé sur votre machine : 
+#### Pour le bon suivi des instructions, vous devrez avoir téléchargé sur votre machine : 
 - Composer (_il est possible de le télécharger ici_ : https://getcomposer.org/download/)
 - Node.js et npm ou yarn (=> https://nodejs.org/en/download/)
 - Symfony CLI (=> https://nodejs.org/en/download/)
