@@ -2,9 +2,11 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Image;
+use App\Entity\Images;
+use App\Entity\Users;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
@@ -14,7 +16,7 @@ class ImageCrudController extends AbstractCrudController
 {
     public static function getEntityFqcn(): string
     {
-        return Image::class;
+        return Images::class;
     }
 
     public function configureCrud(Crud $crud): Crud
@@ -33,6 +35,7 @@ class ImageCrudController extends AbstractCrudController
             IdField::new('id')
                 ->hideOnIndex()
                 ->hideOnForm(),
+            AssociationField::new('admin', 'Nom de l\'admin'),
             TextField::new('title', 'Titre de l\'image'),
             TextField::new('imageFile', 'Fichier')
                 ->setFormType(VichImageType::class)

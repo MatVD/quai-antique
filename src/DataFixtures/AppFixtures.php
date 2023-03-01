@@ -3,11 +3,12 @@
 namespace App\DataFixtures;
 
 use App\Entity\Categories;
-use App\Entity\Dish;
-use App\Entity\Menu;
+use App\Entity\Dishes;
+use App\Entity\Images;
+use App\Entity\Menus;
 use App\Entity\Schedules;
 use App\Entity\Tables;
-use App\Entity\User;
+use App\Entity\Users;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
@@ -25,7 +26,7 @@ class AppFixtures extends Fixture
     {
 
         // --------------- Admin --------------- //
-        $user_admin = new User();
+        $user_admin = new Users();
         $user_admin->setName('capitaine-admin');
         $user_admin->setEmail('capitaine-admin@gmail.com');
             // Criptage du mot de passe avant de le mettre en bdd
@@ -34,9 +35,10 @@ class AppFixtures extends Fixture
         $user_admin->setRoles(["ROLE_USER", "ROLE_ADMIN"]);
         $manager->persist($user_admin);
 
+        $manager->flush();
 
         // --------------- Client --------------- //
-        $user_customer = new User();
+        $user_customer = new Users();
         $user_customer->setName('client1');
         $user_customer->setEmail('client1@gmail.com');
         // Criptage du mot de passe avant de le mettre en bdd
@@ -50,6 +52,7 @@ class AppFixtures extends Fixture
         for ($i = 1; $i < 21; $i++) {
             // Boucle pour générer 20 tables
             $table = new Tables();
+            $table->setAdmin($user_admin);
             $table->setFree(true);
             $manager->persist($table);
         }
@@ -60,6 +63,7 @@ class AppFixtures extends Fixture
         for ($i = 0; $i < 7; $i++) {
             // Boucle pour générer les horaires d'ouvertures
             $schedule = new Schedules();
+            $schedule->setAdmin($user_admin);
             $schedule->setDays($days[$i]);
             if ($i == 0 || $i == 6) {
                 // lundi et dimanche
@@ -111,7 +115,8 @@ class AppFixtures extends Fixture
             $category->setTitle($category_name);
             $manager->persist($category);
             foreach ($dishes as $dish_name => $price) {
-                $dish = new Dish();
+                $dish = new Dishes();
+                $dish->setAdmin($user_admin);
                 $dish->setTitle($dish_name);
                 $dish->setPrice($price);
                 $dish->setCategory($category);
@@ -129,16 +134,13 @@ class AppFixtures extends Fixture
         ];
 
         foreach ($menus as $menu_name => $price) {
-            $menu = new Menu();
+            $menu = new Menus();
+            $menu->setAdmin($user_admin);
             $menu->setTitle($menu_name);
             $menu->setPrice($price);
             $menu->setDescription("$menu_name Proin porttitor, orci nec nonummy molestie mi, non fermentum diam nisl sit amet erat. Duis semper. Duis arcu massa, pretium a, enim. Pellentesque congue.");
             $manager->persist($menu);
         }
-
-
-        // -------------- Images ---------------- //
-
 
         $manager->flush();
     }

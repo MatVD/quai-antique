@@ -7,7 +7,7 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: DishRepository::class)]
-class Dish
+class Dishes
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -25,6 +25,10 @@ class Dish
 
     #[ORM\ManyToOne(targetEntity: Categories::class, inversedBy: 'dishes')]
     private Categories $category;
+
+    #[ORM\ManyToOne(inversedBy: 'dishes')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Users $admin = null;
 
     public function getId(): int
     {
@@ -83,5 +87,17 @@ class Dish
     public function __toString(): string
     {
         return $this->title;
+    }
+
+    public function getAdmin(): ?Users
+    {
+        return $this->admin;
+    }
+
+    public function setAdmin(?Users $admin): self
+    {
+        $this->admin = $admin;
+
+        return $this;
     }
 }

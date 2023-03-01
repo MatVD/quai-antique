@@ -9,7 +9,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 #[ORM\Entity(repositoryClass: ImageRepository::class)]
 #[Vich\Uploadable]
-class Image
+class Images
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -23,7 +23,11 @@ class Image
     private ?string $file = null;
 
     #[Vich\UploadableField(mapping:"galerie_images", fileNameProperty:"file")]
-    private File $imageFile;
+    private ?File $imageFile;
+
+    #[ORM\ManyToOne(inversedBy: 'images')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Users $admin = null;
 
 
     public function getId(): ?int
@@ -36,7 +40,7 @@ class Image
         return $this->file;
     }
 
-    public function setFile(string $file): void
+    public function setFile(?string $file): void
     {
         $this->file = $file;
     }
@@ -60,6 +64,18 @@ class Image
     public function setTitle(string $title): self
     {
         $this->title = $title;
+
+        return $this;
+    }
+
+    public function getAdmin(): ?Users
+    {
+        return $this->admin;
+    }
+
+    public function setAdmin(?Users $admin): self
+    {
+        $this->admin = $admin;
 
         return $this;
     }

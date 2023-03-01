@@ -3,9 +3,9 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Categories;
-use App\Entity\Dish;
-use App\Entity\Image;
-use App\Entity\Menu;
+use App\Entity\Dishes;
+use App\Entity\Images;
+use App\Entity\Menus;
 use App\Entity\Schedules;
 use App\Entity\Tables;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
@@ -36,11 +36,11 @@ class DashboardController extends AbstractDashboardController
     {
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
         yield MenuItem::section('--------');
-        yield MenuItem::linkToCrud('Menus', 'fa-solid fa-book-open', Menu::class);
-        yield MenuItem::linkToCrud('Plats', 'fa-solid fa-bowl-rice', Dish::class);
+        yield MenuItem::linkToCrud('Menus', 'fa-solid fa-book-open', Menus::class);
+        yield MenuItem::linkToCrud('Plats', 'fa-solid fa-bowl-rice', Dishes::class);
         yield MenuItem::linkToCrud('Catégories', 'fa-solid fa-list-ul', Categories::class);
         yield MenuItem::linkToCrud('Horaires', 'fa-solid fa-calendar-days', Schedules::class);
-        yield MenuItem::linkToCrud('Images', 'fa-regular fa-image', Image::class);
+        yield MenuItem::linkToCrud('Images', 'fa-regular fa-image', Images::class);
         yield MenuItem::linkToCrud('Tables','fa-solid fa-utensils',Tables::class);
         yield MenuItem::section('--------');
         yield MenuItem::linkToRoute('Accueil du site', 'fa-solid fa-eye', 'app_home');

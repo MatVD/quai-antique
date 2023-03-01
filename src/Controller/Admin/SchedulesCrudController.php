@@ -5,7 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\Schedules;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
-use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TimeField;
@@ -32,6 +32,7 @@ class SchedulesCrudController extends AbstractCrudController
             IdField::new('id')
                 ->hideOnForm()
                 ->hideOnIndex(),
+            AssociationField::new('admin', 'Nom de l\'admin'),
             TextField::new('days', 'Jour de la semaine'),
             TimeField::new('AMopeningHours', 'Horaires d\'ouverture - Midi'),
             TimeField::new('AMclosingHours', 'Horaires de fermeture - Midi'),

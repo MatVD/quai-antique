@@ -7,7 +7,7 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: MenuRepository::class)]
-class Menu
+class Menus
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -22,6 +22,10 @@ class Menu
 
     #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2, nullable: false)]
     private string $price;
+
+    #[ORM\ManyToOne(inversedBy: 'menus')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Users $admin = null;
 
     public function getId(): int
     {
@@ -67,5 +71,17 @@ class Menu
     public function __toString(): string
     {
         return $this->title;
+    }
+
+    public function getAdmin(): ?Users
+    {
+        return $this->admin;
+    }
+
+    public function setAdmin(?Users $admin): self
+    {
+        $this->admin = $admin;
+
+        return $this;
     }
 }

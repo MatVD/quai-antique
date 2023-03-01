@@ -35,6 +35,9 @@ class Tables
     #[ORM\Column(nullable: true)]
     private array|string|null $allergies;
 
+    #[ORM\ManyToOne(inversedBy: 'tables')]
+    private ?Users $admin = null;
+
     public function getId(): int
     {
         return $this->id;
@@ -107,6 +110,18 @@ class Tables
     public function setAllergies(array|string|null $allergies): self
     {
         $this->allergies = $allergies;
+
+        return $this;
+    }
+
+    public function getAdmin(): ?Users
+    {
+        return $this->admin;
+    }
+
+    public function setAdmin(?Users $admin): self
+    {
+        $this->admin = $admin;
 
         return $this;
     }

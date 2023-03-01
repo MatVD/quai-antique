@@ -29,6 +29,10 @@ class Schedules
     #[ORM\Column(type: Types::TIME_IMMUTABLE, nullable: true)]
     private ?\DateTimeImmutable $PMclosingHours = null;
 
+    #[ORM\ManyToOne(inversedBy: 'schedules')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Users $admin = null;
+
     public function getId(): int
     {
         return $this->id;
@@ -83,5 +87,17 @@ class Schedules
     public function setDays(string $days): void
     {
         $this->days = $days;
+    }
+
+    public function getAdmin(): ?Users
+    {
+        return $this->admin;
+    }
+
+    public function setAdmin(?Users $admin): self
+    {
+        $this->admin = $admin;
+
+        return $this;
     }
 }

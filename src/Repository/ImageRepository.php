@@ -2,26 +2,26 @@
 
 namespace App\Repository;
 
-use App\Entity\Image;
+use App\Entity\Images;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<Image>
+ * @extends ServiceEntityRepository<Images>
  *
- * @method Image|null find($id, $lockMode = null, $lockVersion = null)
- * @method Image|null findOneBy(array $criteria, array $orderBy = null)
- * @method Image[]    findAll()
- * @method Image[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Images|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Images|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Images[]    findAll()
+ * @method Images[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
 class ImageRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Image::class);
+        parent::__construct($registry, Images::class);
     }
 
-    public function save(Image $entity, bool $flush = false): void
+    public function save(Images $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
 
@@ -30,7 +30,7 @@ class ImageRepository extends ServiceEntityRepository
         }
     }
 
-    public function remove(Image $entity, bool $flush = false): void
+    public function remove(Images $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
 
@@ -54,7 +54,7 @@ class ImageRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-    public function findOneBySomeField($value): ?Image
+    public function findOneBySomeField($value): ?Images
     {
         return $this->createQueryBuilder('i')
             ->andWhere('i.title = :val')
