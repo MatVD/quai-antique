@@ -11,7 +11,8 @@
 1 - Git Clone https://github.com/MatVD/quai-antique.git. Utiliser un IDE pour ouvrir l'application web.
 
 2 - Dans le fichier .env (ou créer un fichier .env.local)
-- Y intégrer la variables d'environnement DATABASE_URL. Il vous faudra peut-être un outil du type MAMPP, XAMPP ou LAMP. 
+- Y intégrer la variables d'environnement DATABASE_URL. Il vous faudra peut-être un outil du type MAMPP, XAMPP ou LAMP.
+- Inclure également la variable APP_ENV=dev
 
 3 - Via un terminal, lancer les commandes suivantes:
 - Composer install
