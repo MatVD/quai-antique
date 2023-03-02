@@ -50,7 +50,7 @@
         <h2 class="text-4xl underline">Menus</h2>
         <div class="flex flex-row flex-wrap justify-around max-w-6xl mx-auto">
             {% for menu in menus %}
-                <div class="max-w-md mx-auto m-8">
+                <div class="max-w-md mt-6 mx-11">
                     <h3 class="text-3xl"> {{ menu.title }} - <span class="text-3xl">{{ menu.price | format_number({fraction_digit : 2}) }}€</span></h3>
                     <p>
                         {{ menu.description }}
