@@ -47,7 +47,7 @@ class BookTableController extends AbstractController
         } else {
 
             // Si réservation 1h avant la fin du service
-            if ((date('H:i:s') >= "12:00:00" && date('H:i:s') <= "15:00:00")
+            if ((date('H:i:s') >= "13:00:00" && date('H:i:s') <= "15:00:00")
                 || (date('H:i:s') >= "21:00:00" && date('H:i:s') <= "22:59:59")) {
 
                 // Non acceptation des réservations 1h avant fin du service

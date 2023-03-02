@@ -43,20 +43,24 @@ class TablesRepository extends ServiceEntityRepository
     /**
      * @return Tables[] Returns an array of Tables objects
      */
-    public function findAllTablesFree($value): array
+    public function findAllTablesFree($value): array|string
     {
         // Requête préparée. Elle ne fonctionnera que si la valeur est 1 (true dans la bdd).
         if ($value == 1) {
-            return $this->createQueryBuilder('t')
-                ->andWhere('t.free = :val')
-                ->setParameter('val', $value)
-                ->orderBy('t.id', 'ASC')
-                ->setMaxResults(30)
-                ->getQuery()
-                ->getResult()
-                ;
+            try {
+                return $this->createQueryBuilder('t')
+                    ->andWhere('t.free = :val')
+                    ->setParameter('val', $value)
+                    ->orderBy('t.id', 'ASC')
+                    ->setMaxResults(30)
+                    ->getQuery()
+                    ->getResult()
+                    ;
+            } catch (\Exception $e) {
+                return $e->getMessage('Le paramètre passé à la fonction ne peut être que la valeur 1');
+            }
+
         }
-        return [];
     }
 
 //    public function findOneTableFree($value): ?Tables
