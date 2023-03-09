@@ -1,6 +1,30 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Quai Antique | Accueil{% endblock %}
+{% block stylesheets %}
+    <style>
+        /*Image principale de la page d'accueil*/
+        div.imgBanner {
+            background-image: url('../../public/uploads/images/quaiantiquelogo-63ecbf9c6af68015367382.webp');
+            height: 330px;
+            background-position: center;
+            background-color: black;
+        }
+
+        @media (min-width: 576px) {
+            div.imgBanner {
+                height: 500px;
+            }
+        }
+
+        @media (min-width: 976px) {
+            div.imgBanner {
+                height: 650px;
+            }
+        }
+    </style>
+    parent()
+{% endblock %}
 
 {% block body %}
     <!-- Image Banner -->
