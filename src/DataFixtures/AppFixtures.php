@@ -146,7 +146,7 @@ class AppFixtures extends Fixture
         $images = [
             "image1" => "jed-owen-q6y8xr3soqa-unsplash-63eaaa853dab1900181304-63fe2419dcc01572433692.webp",
             "image2" => "louis-hansel-zbqwr6u-ssk-unsplash-63eaa825d531f563895277.webp",
-            "image3" => "brooke-lark-hlncigvui4q-unsplash-63ecd6f32720d966389990-63f67c75dcd73482671475.jpeg",
+            "image3" => "brooke-lark-hlncigvui4q-unsplash-63ecd6f32720d966389990-63f67c75dcd73482671475.webp",
             "image4" => "matthew-hamilton-ra4mwm9-jka-unsplash-63ecc6b175947233752375.webp",
             "image5" => "toa-heftiba-msxw2vpqzx4-unsplash-63ecd579a337f782518166.webp",
             "image6" => "carlos-fernandez-w3awzjfva6w-unsplash-63ecd8b173fa5025461902.webp"
